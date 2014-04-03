@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOP_EksamensOpgave2014
 {
-    class Program
+    public struct Dimensioner
     {
-        static void Main(string[] args)
-        {
-            Console.ReadLine();
-
-        }
+        public double længde;
+        public double bredde;
+        public double højde;
     }
 }

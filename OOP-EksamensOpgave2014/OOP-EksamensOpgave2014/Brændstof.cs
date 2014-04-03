@@ -6,12 +6,5 @@ using System.Threading.Tasks;
 
 namespace OOP_EksamensOpgave2014
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.ReadLine();
-
-        }
-    }
+    public enum Brændstof { Diesel, Benzin };
 }

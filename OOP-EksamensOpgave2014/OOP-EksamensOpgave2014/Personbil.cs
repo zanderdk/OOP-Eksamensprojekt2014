@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOP_EksamensOpgave2014
 {
-    class Program
+    public abstract class Personbil : Køretøj
     {
-        static void Main(string[] args)
-        {
-            Console.ReadLine();
+        public abstract int AntalSæder {get; set;}
+        public Dimensioner BagagerumsDimensioner;
 
-        }
     }
 }
