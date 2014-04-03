@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP_EksamensOpgave2014
+﻿namespace OOP_EksamensOpgave2014
 {
     public abstract class Personbil : Køretøj
     {
-        public abstract int AntalSæder {get; set;}
+        public abstract int AntalSæder {get; set;} //TODO
         public Dimensioner BagagerumsDimensioner;
 
+        protected override double MaxMotorstørrelse
+        {
+            get { return 10; }
+        }
+
+        protected override double MinMotorstørrelse
+        {
+            get { return 0.7; }
+        }
     }
 }

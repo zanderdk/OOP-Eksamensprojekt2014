@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOP_EksamensOpgave2014
 {
@@ -21,6 +17,16 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
+        protected override double MaxMotorstørrelse
+        {
+            get { return 6.2; }
+        }
+
+        protected override double MinMotorstørrelse
+        {
+            get { return 2.4; }
+        }
+
         public override bool Trækkrog
         {
             get
@@ -33,16 +39,5 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
-        public override double Motorstørrelse
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
     }
 }

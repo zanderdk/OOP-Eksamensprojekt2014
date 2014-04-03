@@ -1,53 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOP_EksamensOpgave2014
 {
     abstract public class Køretøj
     {
-        private string navn;
+        private string _navn;
         public string Navn
         {
-            get { return navn; }
+            get { return _navn; }
             set
             {
                 if (value == null)
                 {
                     throw new ArgumentNullException("Kan ikke sætte et bil navn til null");
                 }
-                navn = value;
+                _navn = value;
             }
         }
 
-        private decimal km;
+        private decimal _km;
         public decimal Km
         {
-            get { return km; }
+            get { return _km; }
             set
             {
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException("Et køretøj kan ikke havde køre minus km");
                 }
-                km = value;
+                _km = value;
             }
         }
 
-        private string registreringsnummer;
+        private string _registreringsnummer;
         public string Registreringsnummer
         {
             get
             {
-                return string.Format("**{0}**", registreringsnummer.Substring(2, 3)) ;
+                return string.Format("**{0}**", _registreringsnummer.Substring(2, 3)) ;
             }
             set
             {
                 if (ErGyldigtRegistreringsnummer(value))
                 {
-                    registreringsnummer = value;
+                    _registreringsnummer = value;
                 }
                 else
                 {
@@ -58,7 +54,7 @@ namespace OOP_EksamensOpgave2014
         }
 
         //TODO: skal opdateres så den er bedre
-        private bool ErGyldigtRegistreringsnummer(string value)
+        private static bool ErGyldigtRegistreringsnummer(string value)
         {
             if (value.Length != 7)
             {
@@ -70,42 +66,59 @@ namespace OOP_EksamensOpgave2014
 
         public readonly int Årgang; // TODO en construkter der sætter denne
 
-        private decimal nyPris;
+        private decimal _nyPris;
         public decimal NyPris
         {
-            get { return nyPris; }
+            get { return _nyPris; }
             set
             {
                 if (value < 0)
 	            {
-		            nyPris = 0;
+		            _nyPris = 0;
 	            }
                 else
                 {
-                    nyPris = value;   
+                    _nyPris = value;   
                 }
             }
         }
 
-        abstract public bool Trækkrog {get; set;}
+        abstract public bool Trækkrog {get; set;} //TODO
 
         public abstract Kørekorttype Kørekorttype { get; }
 
-        abstract public double Motorstørrelse {get; set;}
+        private double _motorstørrelse;
+        protected abstract double MaxMotorstørrelse { get; }
+        protected abstract double MinMotorstørrelse { get; }
+        public double Motorstørrelse
+        {
+            get { return _motorstørrelse; }
+            set
+            {
+                if (MaxMotorstørrelse < value && value < MaxMotorstørrelse)
+                {
+                    _motorstørrelse = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("hmm"); //TODO bedre tekst
+                }
+            }
+        }
 
         public double KmPrL;
 
-        public readonly Brændstof Brændstof;
+        public readonly Brændstof Brændstof; //TODO tildel i construktor
 
         public Energiklasse Energiklasse
         {
             get
             {
-                double brændstofsforbrug = this.KmPrL;
+                double brændstofsforbrug = KmPrL;
 
                 if (this is Autocamper) // TODO flyt til metode
                 {
-                    Varmesystem varm = (this as Autocamper).Varmesystem;
+                    Varmesystem varm = ((Autocamper) this).Varmesystem;
 
                     switch (varm)
 	                {
@@ -118,14 +131,12 @@ namespace OOP_EksamensOpgave2014
                         case Varmesystem.Oliefyr:
                             brændstofsforbrug *= 0.7;
                             break;
-                        default:
-                            break;
 	                }
                 }
 
-                if (this.Årgang < 2010) //TODO: refactor
+                if (Årgang < 2010) //TODO: refactor
                 {
-                    if (this.Brændstof == Brændstof.Diesel)
+                    if (Brændstof == Brændstof.Diesel)
                     {
                         if (brændstofsforbrug >= 23)
                         {
@@ -166,7 +177,7 @@ namespace OOP_EksamensOpgave2014
                 }
                 else
                 {
-                    if (this.Brændstof == Brændstof.Diesel)
+                    if (Brændstof == Brændstof.Diesel)
                     {
                         if (brændstofsforbrug >= 25)
                         {
@@ -208,7 +219,7 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
-        public override string ToString() // TODO
+        public override string ToString() // TODO giv en sigende beskrivelse af køretøjet
         {
             return base.ToString();
         }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOP_EksamensOpgave2014
 {
@@ -10,19 +6,20 @@ namespace OOP_EksamensOpgave2014
     class Erhvervbil : Personbil
     {
         public bool Sikkerhedsbøjle;
+
+        public double Lasteevne;
+
         public override Kørekorttype Kørekorttype
         {
             get
             {
-                if (this.Lasteevne > 750)
+                if (Lasteevne > 750)
                 {
                     return Kørekorttype.BE;
                 }
                 return Kørekorttype.B;
             }
         }
-
-        public double Lasteevne;
 
         public override int AntalSæder
         {
@@ -37,18 +34,6 @@ namespace OOP_EksamensOpgave2014
         }
 
         public override bool Trækkrog
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override double Motorstørrelse
         {
             get
             {
