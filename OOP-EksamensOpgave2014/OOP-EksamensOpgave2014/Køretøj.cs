@@ -12,7 +12,7 @@ namespace OOP_EksamensOpgave2014
             {
                 if (value == null)
                 {
-                    throw new ArgumentNullException("Kan ikke sætte et bil navn til null");
+                    throw new ArgumentNullException("value");
                 }
                 _navn = value;
             }
@@ -26,7 +26,7 @@ namespace OOP_EksamensOpgave2014
             {
                 if (value < 0)
                 {
-                    throw new ArgumentOutOfRangeException("Et køretøj kan ikke havde køre minus km");
+                    throw new ArgumentOutOfRangeException("value");
                 }
                 _km = value;
             }
@@ -101,7 +101,7 @@ namespace OOP_EksamensOpgave2014
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("hmm"); //TODO bedre tekst
+                    throw new ArgumentOutOfRangeException("value");
                 }
             }
         }
