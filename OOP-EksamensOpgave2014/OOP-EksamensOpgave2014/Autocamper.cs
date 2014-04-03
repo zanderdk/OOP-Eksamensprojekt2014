@@ -12,15 +12,14 @@ namespace OOP_EksamensOpgave2014
         public int Sovepladser;
         public bool Toilet;
         public Varmesystem Varmesystem;
-        public override int Energiklasse //TODO
+
+        public override Kørekorttype Kørekorttype
         {
             get
             {
-                return base.Energiklasse;
+                return Kørekorttype.B;
             }
         }
-
-        public override Kørekorttype Kørekorttype {get; set;}
 
         public override bool Trækkrog
         {

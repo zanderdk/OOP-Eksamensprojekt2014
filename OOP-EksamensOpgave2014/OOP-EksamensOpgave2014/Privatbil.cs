@@ -46,5 +46,13 @@ namespace OOP_EksamensOpgave2014
                 throw new NotImplementedException();
             }
         }
+
+        public override Kørekorttype Kørekorttype
+        {
+            get
+            {
+                return Kørekorttype.B;
+            }
+        }
     }
 }

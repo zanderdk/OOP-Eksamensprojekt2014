@@ -18,7 +18,17 @@ namespace OOP_EksamensOpgave2014
         public double Vægt;
 
 
-        public override Kørekorttype Kørekorttype { get; set; } //TODO
+        public override Kørekorttype Kørekorttype
+        {
+            get
+            {
+                if (this.Trækkrog)
+                {
+                    return Kørekorttype.DE;
+                }
+                return Kørekorttype.D;
+            }
+        }
 
         public override bool Trækkrog
         {

@@ -45,6 +45,7 @@
     <Compile Include="Brændstof.cs" />
     <Compile Include="Bus.cs" />
     <Compile Include="Dimensioner.cs" />
+    <Compile Include="Energiklasse.cs" />
     <Compile Include="Erhvervbil.cs" />
     <Compile Include="Kørekorttype.cs" />
     <Compile Include="Køretøj.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Privatbil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistreringnummerException.cs" />
     <Compile Include="Varmesystem.cs" />
   </ItemGroup>
   <ItemGroup>

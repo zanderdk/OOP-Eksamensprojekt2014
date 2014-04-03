@@ -10,7 +10,17 @@ namespace OOP_EksamensOpgave2014
     class Erhvervbil : Personbil
     {
         public bool Sikkerhedsbøjle;
-        public override Kørekorttype Kørekorttype { get; set; }
+        public override Kørekorttype Kørekorttype
+        {
+            get
+            {
+                if (this.Lasteevne > 750)
+                {
+                    return Kørekorttype.BE;
+                }
+                return Kørekorttype.B;
+            }
+        }
 
         public double Lasteevne;
 

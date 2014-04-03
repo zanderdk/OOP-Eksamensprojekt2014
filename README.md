@@ -9,6 +9,9 @@ Personer i gruppen:
  * Frederik Højholt Andersen A405a
  * Alexander Dalsgaard Krog A405a
 
+## Todo
+TJEK ALL NOT YET IMPLEMENTED
+
 ## Kørsel
 
 ## Status af programmet, inklusiv en beskrivelse af eventuelle antagelser, begrænsninger, udvidelser, eller variationer i forhold til opgaveformuleringen.
