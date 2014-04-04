@@ -4,6 +4,12 @@ namespace OOP_EksamensOpgave2014
 {
     abstract public class Køretøj
     {
+        protected Køretøj(Brændstof brændstof, int årgang)
+        {
+            Brændstof = brændstof;
+            Årgang = årgang;
+        }
+
         private string _navn;
         public string Navn
         {
@@ -64,7 +70,7 @@ namespace OOP_EksamensOpgave2014
             return int.TryParse(value.Substring(2, 5), out buf);
         }
 
-        public readonly int Årgang; // TODO en construkter der sætter denne
+        public readonly int Årgang;
 
         private decimal _nyPris;
         public decimal NyPris
@@ -108,7 +114,7 @@ namespace OOP_EksamensOpgave2014
 
         public double KmPrL;
 
-        public readonly Brændstof Brændstof; //TODO tildel i construktor
+        public readonly Brændstof Brændstof;
 
         public Energiklasse Energiklasse
         {

@@ -9,6 +9,10 @@ namespace OOP_EksamensOpgave2014
 
         public double Lasteevne;
 
+        public Erhvervbil(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        {
+        }
+
         public override Kørekorttype Kørekorttype
         {
             get

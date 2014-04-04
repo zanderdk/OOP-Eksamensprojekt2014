@@ -9,6 +9,10 @@ namespace OOP_EksamensOpgave2014
         public bool Toilet;
         public Varmesystem Varmesystem;
 
+        public Autocamper(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        {
+        }
+
         public override Kørekorttype Kørekorttype
         {
             get

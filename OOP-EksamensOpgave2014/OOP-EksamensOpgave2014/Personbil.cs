@@ -2,6 +2,10 @@
 {
     public abstract class Personbil : Køretøj
     {
+        protected Personbil(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        {
+        }
+
         public abstract int AntalSæder {get; set;} //TODO
         public Dimensioner BagagerumsDimensioner;
 

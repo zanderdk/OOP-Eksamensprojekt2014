@@ -7,6 +7,10 @@ namespace OOP_EksamensOpgave2014
     {
         public bool IsofixBeslag;
 
+        public Privatbil(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        {
+        }
+
         public override int AntalSæder
         {
             get
