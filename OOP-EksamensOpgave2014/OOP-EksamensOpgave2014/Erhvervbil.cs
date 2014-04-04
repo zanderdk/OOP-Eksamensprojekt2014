@@ -37,9 +37,9 @@ namespace OOP_EksamensOpgave2014
         {
             get
             {
-                throw new NotImplementedException();
+                return true;
             }
-            set
+            set 
             {
                 throw new NotImplementedException();
             }

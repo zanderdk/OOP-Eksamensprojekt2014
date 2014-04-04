@@ -6,10 +6,12 @@ namespace OOP_EksamensOpgave2014
     {
         static void Main()
         {
-            var bil = new Privatbil { Registreringsnummer = "aa12345" };
+            var bil = new Privatbil { Registreringsnummer = "aa12345", Navn = "Volvo", Km = 9001, KmPrL = 14};
+            Console.WriteLine(bil.ToString());
             Console.WriteLine(bil.Registreringsnummer);
             Console.WriteLine(bil.Kørekorttype);
             Console.ReadLine();
+
             // TODO "hardcodet" demonstration af funktionaliteten
         }
     }

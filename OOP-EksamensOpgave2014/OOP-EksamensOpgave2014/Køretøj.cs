@@ -221,7 +221,7 @@ namespace OOP_EksamensOpgave2014
 
         public override string ToString() // TODO giv en sigende beskrivelse af køretøjet
         {
-            return base.ToString();
+            return string.Format("Navn: {0}\nKilometer kørt: {1}\nKilometer Pr Liter: {2}\nEnergiklasse: {3}",Navn,Km,KmPrL,Energiklasse);
         }
         
     }
