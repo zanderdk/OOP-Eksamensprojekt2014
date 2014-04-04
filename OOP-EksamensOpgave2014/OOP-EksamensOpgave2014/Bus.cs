@@ -8,6 +8,10 @@ namespace OOP_EksamensOpgave2014
         public int Sovepladser;
         public bool Toilet;
 
+        public Bus(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        {
+        }
+
         public override Kørekorttype Kørekorttype
         {
             get

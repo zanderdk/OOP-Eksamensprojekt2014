@@ -6,7 +6,7 @@ namespace OOP_EksamensOpgave2014
     {
         static void Main()
         {
-            var bil = new Privatbil { Registreringsnummer = "aa12345" };
+            var bil = new Privatbil(Brændstof.Benzin, 2013) { Registreringsnummer = "aa12345" };
             Console.WriteLine(bil.Registreringsnummer);
             Console.WriteLine(bil.Kørekorttype);
             Console.ReadLine();

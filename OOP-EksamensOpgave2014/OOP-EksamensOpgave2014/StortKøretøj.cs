@@ -6,6 +6,10 @@
         public double Længde;
         public double Vægt;
 
+        protected StortKøretøj(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        {
+        }
+
         protected override double MinMotorstørrelse
         {
             get { return 4.2; }
