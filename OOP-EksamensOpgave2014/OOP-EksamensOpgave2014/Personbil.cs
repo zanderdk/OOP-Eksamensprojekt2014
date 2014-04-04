@@ -6,7 +6,12 @@
         {
         }
 
-        public abstract int AntalSæder {get; set;} //TODO
+        protected int _antalSæder;
+        public abstract int AntalSæder {
+            get;
+            set;
+        }
+        
         public Dimensioner BagagerumsDimensioner;
 
         protected override double MaxMotorstørrelse

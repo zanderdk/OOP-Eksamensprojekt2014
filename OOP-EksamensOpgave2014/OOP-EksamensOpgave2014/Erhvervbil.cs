@@ -9,7 +9,8 @@ namespace OOP_EksamensOpgave2014
 
         public double Lasteevne;
 
-        public Erhvervbil(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        public Erhvervbil(Brændstof brændstof, int årgang, int antalSæder)
+            : base(brændstof, årgang)
         {
         }
 
@@ -27,13 +28,14 @@ namespace OOP_EksamensOpgave2014
 
         public override int AntalSæder
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return _antalSæder; }
             set
             {
-                throw new NotImplementedException();
+                if (value != 2)
+                {
+                    throw new ArgumentOutOfRangeException("value");
+                }
+                _antalSæder = value;
             }
         }
 

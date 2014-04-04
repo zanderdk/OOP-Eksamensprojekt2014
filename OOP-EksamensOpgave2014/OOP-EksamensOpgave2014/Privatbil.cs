@@ -7,19 +7,22 @@ namespace OOP_EksamensOpgave2014
     {
         public bool IsofixBeslag;
 
-        public Privatbil(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        public Privatbil(Brændstof brændstof, int årgang, int antalSæder)
+            : base(brændstof, årgang)
         {
+            AntalSæder = antalSæder;
         }
 
         public override int AntalSæder
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return _antalSæder; }
             set
             {
-                throw new NotImplementedException();
+                if (value < 2 || value > 7)
+                {
+                    throw new ArgumentOutOfRangeException("value");
+                }
+                _antalSæder = value;
             }
         }
 
