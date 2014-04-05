@@ -1,24 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OOP_EksamensOpgave2014
 {
     public class Auktionshus
     {
-        //TODO skal havde en list over ting til salg
 
-        //solgte køretøjer
+
+
+        public Auktionshus()
+        {
+            _salgslist = new List<Auktion>();
+            _solgtekøretøjer = new List<Auktion>();
+        }
+
+        private List<Auktion> _salgslist;
+        private List<Auktion> _solgtekøretøjer;
 
         public int SætTilSalg(Køretøj k, Sælger s, decimal minPris)
         {
-            throw  new NotImplementedException();
-        }
-        /*Et køretøj sættes til salg via ovenstående metode, hvor k er køretøjet der sættes til salg, s er
-sælgeren, og minPris angiver mindstebeløbet før sælger vil overveje at sælge. Når der kommer
-et bud der overstiger den angivne minimumpris, skal sælgeren notificeres herom via sælgers
-ModtagNotifikationOmBud(..) metode. Endeligt skal der returneres et unikt auktionsnummer
-der kan bruges til senere at referere til det givne køretøj der er sat til salg.*/
+            Auktion nyAuktion = new Auktion(k, s, minPris);
+            _salgslist.Add(nyAuktion);
+            nyAuktion.VedNytBud += s.ModtagNotifikationOmBud;
 
-        public int SætTilSalg(Køretøj k, Sælger s, decimal minPris, object notifikationsMetode) // TODO find en passende type til notifikationsMetode
+            return nyAuktion.Auktionsnummer;
+            // TODO test event delegate
+        }
+
+        public int SætTilSalg(Køretøj k, Sælger s, decimal minPris, Action<object, Auktion.AuktionArgs> notifikationsMetode) 
         {
             throw  new NotImplementedException();
         }
@@ -32,6 +41,5 @@ der kan bruges til senere at referere til det givne køretøj der er sat til sal
         {
             throw  new NotImplementedException();
         }
-
     }
 }

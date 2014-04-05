@@ -60,7 +60,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistreringnummerException.cs" />
-    <Compile Include="Salg.cs" />
+    <Compile Include="Auktion.cs" />
     <Compile Include="StortKøretøj.cs" />
     <Compile Include="Sælger.cs" />
     <Compile Include="Varmesystem.cs" />

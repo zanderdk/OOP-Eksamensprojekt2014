@@ -5,6 +5,6 @@ namespace OOP_EksamensOpgave2014
     public interface Sælger : ISaldo
     {
         int PostNummer { get; set; }
-        void ModtagNotifikationOmBud(object sender, EventArgs args);
+        void ModtagNotifikationOmBud(object sender, Auktion.AuktionArgs args);
     }
 }

@@ -1,7 +1,16 @@
-﻿namespace OOP_EksamensOpgave2014
+﻿using System;
+
+namespace OOP_EksamensOpgave2014
 {
     class Privatperson : Køber, Sælger
     {
+        public readonly int CPRnummer;
+
+        public Privatperson(int cpRnummer)
+        {
+            CPRnummer = cpRnummer;
+        }
+
         public decimal Saldo
         {
             get
@@ -26,9 +35,9 @@
             }
         }
 
-        public void ModtagNotifikationOmBud(object sender, System.EventArgs args)
+        public void ModtagNotifikationOmBud(object sender, Auktion.AuktionArgs args)
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Person med CPR " + CPRnummer + "har modtager et bud på auktion #" + args.Auktionsnummer + " på " + args.Bud + "kr");
         }
     }
 }
