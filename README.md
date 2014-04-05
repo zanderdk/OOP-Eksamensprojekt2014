@@ -20,6 +20,8 @@ Hvis man laver en bus eller lastbil sætter vi bare brændstop til diesel
 
 Man laver aldrig om på brændstofs typen.
 
+Ingen verifisering af cpr og cvr
+
 ## Kilder
 
 ## Underskrift

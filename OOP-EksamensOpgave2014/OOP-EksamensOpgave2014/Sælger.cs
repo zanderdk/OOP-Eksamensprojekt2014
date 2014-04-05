@@ -2,13 +2,9 @@
 
 namespace OOP_EksamensOpgave2014
 {
-    public class Sælger
+    public interface Sælger : ISaldo
     {
-        public int PostNummer;
-
-        public void ModtagNotifikationOmBud(object sender, EventArgs args)
-        {
-            throw  new NotImplementedException();
-        }
+        int PostNummer { get; set; }
+        void ModtagNotifikationOmBud(object sender, EventArgs args);
     }
 }
