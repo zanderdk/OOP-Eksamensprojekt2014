@@ -6,9 +6,9 @@ namespace OOP_EksamensOpgave2014
     {
         public readonly Køretøj Køretøj;
         public readonly Sælger Sælger;
-        public readonly decimal MinPris;
         public readonly int Auktionsnummer;
-
+        public Køber HøjesteByder { get; set; }
+        public decimal MinPris { get; private set; }
         // TODO immutable for now
         public Auktion(Køretøj køretøj, Sælger sælger, decimal minPris)
         {
@@ -41,6 +41,14 @@ namespace OOP_EksamensOpgave2014
                 Auktionsnummer = auktionsnummer;
                 Bud = bud;
             }
+        }
+
+        public void AfgivBud(Køber køber, decimal bud)
+        {
+            MinPris = bud;
+            HøjesteByder = køber;
+            var args = new AuktionArgs(Auktionsnummer, bud);
+            _vedNytBud(args);
         }
     }
 }
