@@ -1,13 +1,7 @@
-﻿using System;
-
-namespace OOP_EksamensOpgave2014
+﻿namespace OOP_EksamensOpgave2014
 {
-    public class Bus : StortKøretøj
+    public class Bus : StortKøretøj, ISoveable
     {
-        public int Siddepladser;
-        public int Sovepladser;
-        public bool Toilet;
-
         public Bus(Brændstof brændstof, int årgang) : base(brændstof, årgang)
         {
         }
@@ -24,17 +18,8 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
-        public override bool Trækkrog
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        public int Siddepladser { get; set; }
+        public int Sovepladser { get; set; }
+        public bool Toilet { get; set; }
     }
 }

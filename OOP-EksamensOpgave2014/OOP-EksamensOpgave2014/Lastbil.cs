@@ -20,20 +20,6 @@ namespace OOP_EksamensOpgave2014
                 }
                 return Kørekorttype.C;
             }
-        }
-
-        public override bool Trækkrog
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        
+        }   
     }
 }

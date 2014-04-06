@@ -87,7 +87,7 @@ namespace OOP_EksamensOpgave2014
             køber.Saldo -= købspris;
             decimal salær = Salær(købspris);
             auk.Sælger.Saldo += købspris - salær;
-            // salær forsvinder til tomrummet
+            // salær forsvinder i intetheden
 
             _salgsListe.Remove(auk);
             _solgteKøretøjer.Add(auk);
@@ -122,20 +122,19 @@ namespace OOP_EksamensOpgave2014
         // 2) Find køretøjer der har et minimum angivet antal siddepladser samt toiletfaciliteter.
         public IEnumerable<Auktion> Pladser(int antal)
         {
-            // TODO
-            throw new NotImplementedException();
+            //TODO hmmm
+            return _salgsListe.Where(a => a.Køretøj is ISoveable)
+                .Where(a => (a.Køretøj as ISoveable).Toilet)
+                .Where(a => (a.Køretøj as ISoveable).Siddepladser >= antal);
         }
 
         // 3) Find køretøjer der kræver stort kørekort (kategori C, D, CE eller DE) og vejer under en angivet 
         // maksimalvægt.
         public IEnumerable<Auktion> StortKørekort(double maksimalvægt)
         {
-            //TODO hmmm
             return _salgsListe
                 .Where(a => a.Køretøj is StortKøretøj)
-                .Select(a => Tuple.Create(a, a.Køretøj as StortKøretøj))
-                .Where(t => t.Item2.Vægt < maksimalvægt)
-                .Select(t => t.Item1);
+                .Where(a => (a.Køretøj as StortKøretøj).Vægt < maksimalvægt);
         }
 
         // 4) Find alle personbiler til privatbrug som har kørt under et angivet antal km, og hvor minimum
@@ -143,14 +142,11 @@ namespace OOP_EksamensOpgave2014
         // rækkefølge efter antal kørte km.
         public IEnumerable<Auktion> PrivatBiler(decimal maksimalKm, decimal maxMinPris)
         {
-            //TODO hmmm
             return _salgsListe
                 .Where(a => a.Køretøj is Privatbil)
-                .Select(a => Tuple.Create(a, a.Køretøj as Privatbil))
-                .Where(t => t.Item2.Km < maksimalKm)
-                .Where(t => t.Item1.MinPris < maxMinPris)
-                .OrderBy(t => t.Item2.Km)
-                .Select(t => t.Item1);
+                .Where(t => t.Køretøj.Km < maksimalKm)
+                .Where(t => t.MinPris < maxMinPris)
+                .OrderBy(t => t.Køretøj.Km);
         }
 
         // 5) Find alle køretøjer hvor køretøjets sælger er bosiddende inden for en bestemt radius af et

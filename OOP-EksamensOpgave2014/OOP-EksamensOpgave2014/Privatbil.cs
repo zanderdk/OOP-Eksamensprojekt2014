@@ -19,23 +19,11 @@ namespace OOP_EksamensOpgave2014
             get { return _antalSæder; }
             set
             {
-                if (value < 2 || value > 7)
+                if (2 <= value && value >= 7)
                 {
                     throw new ArgumentOutOfRangeException("value");
                 }
                 _antalSæder = value;
-            }
-        }
-
-        public override bool Trækkrog
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
             }
         }
 

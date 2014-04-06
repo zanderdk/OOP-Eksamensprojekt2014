@@ -50,6 +50,7 @@
     <Compile Include="Erhvervbil.cs" />
     <Compile Include="Firma.cs" />
     <Compile Include="ISaldo.cs" />
+    <Compile Include="ISoveable.cs" />
     <Compile Include="Køber.cs" />
     <Compile Include="Kørekorttype.cs" />
     <Compile Include="Køretøj.cs" />

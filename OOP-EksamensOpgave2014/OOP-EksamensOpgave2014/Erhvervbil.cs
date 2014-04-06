@@ -9,9 +9,18 @@ namespace OOP_EksamensOpgave2014
 
         public double Lasteevne;
 
-        public Erhvervbil(Brændstof brændstof, int årgang, int antalSæder)
+        public Erhvervbil(Brændstof brændstof, int årgang, int antalSæder, bool trækkrog)
             : base(brændstof, årgang)
         {
+            if (trækkrog)
+            {
+                _trækkrog = true;
+            }
+            else
+            {
+                throw new ArgumentException("Personbiler til erhverv skal være udstyret med en trækkrog");
+            }
+            
         }
 
         public override Kørekorttype Kørekorttype
@@ -41,13 +50,17 @@ namespace OOP_EksamensOpgave2014
 
         public override bool Trækkrog
         {
-            get
-            {
-                return true;
-            }
+            get { return _trækkrog; }
             set 
             {
-                throw new NotImplementedException();
+                if (value)
+                {
+                    _trækkrog = true;
+                }
+                else
+                {
+                    throw new ArgumentException("Personbiler til erhverv skal være udstyret med en trækkrog");
+                }
             }
         }
     }

@@ -10,6 +10,9 @@ namespace OOP_EksamensOpgave2014
             Årgang = årgang;
         }
 
+        public readonly Brændstof Brændstof;
+        public readonly int Årgang;
+
         private string _navn;
         public string Navn
         {
@@ -70,27 +73,22 @@ namespace OOP_EksamensOpgave2014
             return int.TryParse(value.Substring(2, 5), out buf);
         }
 
-        public readonly int Årgang;
-
         private decimal _nyPris;
         public decimal NyPris
         {
             get { return _nyPris; }
-            set
-            {
-                if (value < 0)
-	            {
-		            _nyPris = 0;
-	            }
-                else
-                {
-                    _nyPris = value;   
-                }
+            set {
+                _nyPris = value < 0 ? 0 : value;
             }
         }
 
-        abstract public bool Trækkrog { get; set; } //TODO personbiler til erhverv være udstyret med en trækkrog
-
+        protected bool _trækkrog;
+        public virtual bool Trækkrog
+        {
+            get { return _trækkrog; }
+            set { _trækkrog = value; }
+        }
+        
         public abstract Kørekorttype Kørekorttype { get; }
 
         private double _motorstørrelse;
@@ -101,7 +99,7 @@ namespace OOP_EksamensOpgave2014
             get { return _motorstørrelse; }
             set
             {
-                if (MaxMotorstørrelse < value && value < MaxMotorstørrelse)
+                if (MaxMotorstørrelse <= value && value <= MaxMotorstørrelse)
                 {
                     _motorstørrelse = value;
                 }
@@ -113,8 +111,6 @@ namespace OOP_EksamensOpgave2014
         }
 
         public double KmPrL;
-
-        public readonly Brændstof Brændstof;
 
         public Energiklasse Energiklasse
         {

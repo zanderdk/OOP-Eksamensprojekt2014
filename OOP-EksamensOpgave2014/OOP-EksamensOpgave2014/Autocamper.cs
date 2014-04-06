@@ -2,11 +2,9 @@
 
 namespace OOP_EksamensOpgave2014
 {
-    public class Autocamper : Køretøj
+    public class Autocamper : Køretøj, ISoveable
     {
-        public int Siddepladser;
-        public int Sovepladser;
-        public bool Toilet;
+
         public Varmesystem Varmesystem;
 
         public Autocamper(Brændstof brændstof, int årgang) : base(brændstof, årgang)
@@ -31,17 +29,8 @@ namespace OOP_EksamensOpgave2014
             get { return 2.4; }
         }
 
-        public override bool Trækkrog
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        public int Siddepladser { get; set; }
+        public int Sovepladser { get; set; }
+        public bool Toilet { get; set; }
     }
 }

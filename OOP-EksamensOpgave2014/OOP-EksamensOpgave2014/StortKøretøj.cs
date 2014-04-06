@@ -1,4 +1,6 @@
-﻿namespace OOP_EksamensOpgave2014
+﻿using System;
+
+namespace OOP_EksamensOpgave2014
 {
     abstract public class StortKøretøj : Køretøj
     {
@@ -8,6 +10,10 @@
 
         protected StortKøretøj(Brændstof brændstof, int årgang) : base(brændstof, årgang)
         {
+            if (brændstof == Brændstof.Benzin)
+            {
+                throw new ArgumentException("StortKøretøj kan kun køre på diesel");
+            }
         }
 
         protected override double MinMotorstørrelse

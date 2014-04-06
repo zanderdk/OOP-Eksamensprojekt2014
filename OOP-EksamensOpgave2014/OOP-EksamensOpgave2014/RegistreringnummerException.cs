@@ -10,5 +10,4 @@ namespace OOP_EksamensOpgave2014
         public RegistreringnummerException(string s, Exception ex)
             : base(s, ex) {}
     }
-
 }
