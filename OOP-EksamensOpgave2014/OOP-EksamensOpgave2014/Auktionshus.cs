@@ -23,7 +23,7 @@ namespace OOP_EksamensOpgave2014
             {
                 foreach (var auktion in _solgteKøretøjer)
                 {
-                    yield return auktion;
+                    yield return auktion; // M:Yield?
                 }
             }
         }
@@ -40,12 +40,12 @@ namespace OOP_EksamensOpgave2014
             nyAuktion.VedNytBud += notifikationsMetode;
 
             return nyAuktion.Auktionsnummer;
-            // TODO test event delegate
+            // TODO test event delegate M: Delegate?
         }
 
         public bool ModtagBud(Køber køber, int auktionsNummer, decimal bud)
         {
-            //TODO skal vi bruge var?
+            //TODO skal vi bruge var? M: Var, fordele ved implicit defination?
             var auk = _salgsListe.Find(a => a.Auktionsnummer == auktionsNummer);
             if (auk == null)
             {
