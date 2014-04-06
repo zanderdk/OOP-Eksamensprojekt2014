@@ -7,13 +7,13 @@ namespace OOP_EksamensOpgave2014
     {
         public bool IsofixBeslag;
 
-        public Privatbil(Brændstof brændstof, int årgang, int antalSæder)
+        public Privatbil(Brændstof brændstof, int årgang)
             : base(brændstof, årgang)
         {
-            // TODO vi skal havde kigget på sæder
-            AntalSæder = antalSæder;
+            
         }
 
+        // TODO vi skal havde kigget på sæder
         public override int AntalSæder
         {
             get { return _antalSæder; }

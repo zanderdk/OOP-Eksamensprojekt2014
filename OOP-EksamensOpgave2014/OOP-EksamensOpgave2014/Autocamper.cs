@@ -7,8 +7,10 @@ namespace OOP_EksamensOpgave2014
 
         public Varmesystem Varmesystem;
 
-        public Autocamper(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        public Autocamper(Brændstof brændstof, int årgang, Varmesystem varmesystem)
+            : base(brændstof, årgang)
         {
+            Varmesystem = varmesystem;
         }
 
         public override Kørekorttype Kørekorttype

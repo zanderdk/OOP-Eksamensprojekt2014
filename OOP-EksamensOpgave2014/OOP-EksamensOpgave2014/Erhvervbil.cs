@@ -9,7 +9,7 @@ namespace OOP_EksamensOpgave2014
 
         public double Lasteevne;
 
-        public Erhvervbil(Brændstof brændstof, int årgang, int antalSæder, bool trækkrog)
+        public Erhvervbil(Brændstof brændstof, int årgang, bool trækkrog)
             : base(brændstof, årgang)
         {
             if (trækkrog)
