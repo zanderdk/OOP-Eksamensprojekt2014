@@ -136,9 +136,15 @@ Metodens returværdi angiver om handlen blev succesfuldt gennemført.*/
             });
         }
 
-/*
-Til slut, lav en metode der returnerer den gennemsnitlige energi-klasse for alle køretøjer til salg. I den
-forbindelse kan energi-klasserne konverteres til tal (A = 1, B = 2, C = 3, D = 4). Afrund resultatet til
-nærmeste heltal inden den tilhørende energiklasse returneres.*/
+        // Til slut, lav en metode der returnerer den gennemsnitlige energi-klasse for alle køretøjer til salg. I den
+        // forbindelse kan energi-klasserne konverteres til tal (A = 1, B = 2, C = 3, D = 4). Afrund resultatet til
+        // nærmeste heltal inden den tilhørende energiklasse returneres.
+        // Vi konvertere til 0 1 2 3, det skulle gerne give det samme resultat
+        public Energiklasse GennemsnitligeEnergiKlasse()
+        {
+            double gennemsnit = _salgsListe.Average(a => (int)a.Køretøj.Energiklasse);
+            int afrundet = Convert.ToInt32(gennemsnit);
+            return (Energiklasse) afrundet;
+        }
     }
 }
