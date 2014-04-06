@@ -140,89 +140,31 @@ namespace OOP_EksamensOpgave2014
 	                }
                 }
 
-                if (Årgang < 2010) //TODO refactor
+                if (Årgang < 2010)
                 {
                     if (Brændstof == Brændstof.Diesel)
                     {
-                        if (brændstofsforbrug >= 23)
-                        {
-                            return Energiklasse.A;
-                        }
-                        else if (brændstofsforbrug >= 18)
-                        {
-                            return Energiklasse.B;
-                        }
-                        else if (brændstofsforbrug >= 13)
-                        {
-                            return Energiklasse.C;
-                        }
-                        else
-                        {
-                            return Energiklasse.D;
-                        }
+                        return Energimærke(brændstofsforbrug, 13, 18, 23);
                     }
-                    else
-                    {
-                        if (brændstofsforbrug >= 18)
-                        {
-                            return Energiklasse.A;
-                        }
-                        else if (brændstofsforbrug >= 14)
-                        {
-                            return Energiklasse.B;
-                        }
-                        else if (brændstofsforbrug >= 10)
-                        {
-                            return Energiklasse.C;
-                        }
-                        else
-                        {
-                            return Energiklasse.D;
-                        }
-                    }
+                    return Energimærke(brændstofsforbrug, 10, 14, 18);
                 }
-                else
+                if (Brændstof == Brændstof.Diesel)
                 {
-                    if (Brændstof == Brændstof.Diesel)
-                    {
-                        if (brændstofsforbrug >= 25)
-                        {
-                            return Energiklasse.A;
-                        }
-                        else if (brændstofsforbrug >= 20)
-                        {
-                            return Energiklasse.B;
-                        }
-                        else if (brændstofsforbrug >= 15)
-                        {
-                            return Energiklasse.C;
-                        }
-                        else
-                        {
-                            return Energiklasse.D;
-                        }
-                    }
-                    else
-                    {
-                        if (brændstofsforbrug >= 20)
-                        {
-                            return Energiklasse.A;
-                        }
-                        else if (brændstofsforbrug >= 16)
-                        {
-                            return Energiklasse.B;
-                        }
-                        else if (brændstofsforbrug >= 12)
-                        {
-                            return Energiklasse.C;
-                        }
-                        else
-                        {
-                            return Energiklasse.D;
-                        }
-                    }
+                    return Energimærke(brændstofsforbrug, 15, 20, 25);
                 }
+                return Energimærke(brændstofsforbrug, 12, 16, 20);
             }
+        }
+
+        private static Energiklasse Energimærke(double brændstofsforbrug, int min, int mid, int max)
+        {
+            if (brændstofsforbrug >= max)
+                return Energiklasse.A;
+            if (brændstofsforbrug >= mid)
+                return Energiklasse.B;
+            if (brændstofsforbrug >= min)
+                return Energiklasse.C;
+            return Energiklasse.D;
         }
 
         public override string ToString() // TODO giv en sigende beskrivelse af køretøjet
