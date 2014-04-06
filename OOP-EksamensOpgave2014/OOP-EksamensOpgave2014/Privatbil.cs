@@ -10,6 +10,7 @@ namespace OOP_EksamensOpgave2014
         public Privatbil(Brændstof brændstof, int årgang, int antalSæder)
             : base(brændstof, årgang)
         {
+            // TODO vi skal havde kigget på sæder
             AntalSæder = antalSæder;
         }
 

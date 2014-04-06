@@ -4,7 +4,7 @@ namespace OOP_EksamensOpgave2014
 {
     public class Lastbil : StortKøretøj
     {
-        public double Lasteevne; // TODO: Måske lidt forvirende når evher også har, lav evt et interface
+        public double Lasteevne;
 
         public Lastbil(Brændstof brændstof, int årgang) : base(brændstof, årgang)
         {

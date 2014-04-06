@@ -12,7 +12,7 @@ Personer i gruppen:
 ## Status af programmet, inklusiv en beskrivelse af eventuelle antagelser, begrænsninger, udvidelser, eller variationer i forhold til opgaveformuleringen.
 
 ## antagelser
-Vi har valg at skrive på dansk, da opgaveformuleringen er det. Alle egenskaber er skrevet som i opgave formuleringen
+Vi har valg at skrive på dansk, da opgaveformuleringen er det. Alle egenskaber er skrevet som i opgave formuleringen. Men nogle steder giver det ikke gramatisk mening (PostNummer)
 
 Når man laver en erhvervsbil regner vi med den har en krog.
 

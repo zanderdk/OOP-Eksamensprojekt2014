@@ -6,34 +6,28 @@ namespace OOP_EksamensOpgave2014
     {
         public readonly int CVRnummer;
 
-        public Firma(int cvRnummer)
+        public Firma(int CVRnummer)
         {
-            CVRnummer = cvRnummer;
+            this.CVRnummer = CVRnummer;
         }
 
+        public decimal Kredit { get; set; } //TODO hvad gør vi hvis man ændre kredit og er i undeskud?s
+        private decimal _saldo;
         public decimal Saldo
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
+            get { return _saldo; }
             set
             {
-                throw new System.NotImplementedException();
+                if (value >= -Kredit)
+                {
+                    _saldo = value;
+                    return;
+                }
+                throw new ArgumentOutOfRangeException("value");
             }
         }
 
-        public int PostNummer
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-                throw new System.NotImplementedException();
-            }
-        }
+        public int Postnummer { get; set; }
 
         public void ModtagNotifikationOmBud(object sender, Auktion.AuktionArgs args)
         {

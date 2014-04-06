@@ -2,7 +2,7 @@
 
 namespace OOP_EksamensOpgave2014
 {
-    public class Auktion //TODO bedre navn
+    public class Auktion
     {
         public readonly Køretøj Køretøj;
         public readonly Sælger Sælger;

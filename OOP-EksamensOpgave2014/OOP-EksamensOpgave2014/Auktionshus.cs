@@ -51,7 +51,17 @@ namespace OOP_EksamensOpgave2014
             {
                 throw new InvalidOperationException("Kan ikke find auktionsNummer");
             }
-            if (auk.MinPris >= bud || køber.Saldo <= bud) return false;
+            if (auk.MinPris >= bud) return false;
+
+            if (køber is Firma)
+            {
+                if (køber.Saldo + (køber as Firma).Kredit <= bud) return false;
+            }
+            else
+            {
+                if (køber.Saldo <= bud) return false;
+            }
+            
             auk.AfgivBud(køber, bud);
             return true;
         }
@@ -112,7 +122,8 @@ namespace OOP_EksamensOpgave2014
         // 2) Find køretøjer der har et minimum angivet antal siddepladser samt toiletfaciliteter.
         public IEnumerable<Auktion> Pladser(int antal)
         {
-            throw new System.NotImplementedException();
+            // TODO
+            throw new NotImplementedException();
         }
 
         // 3) Find køretøjer der kræver stort kørekort (kategori C, D, CE eller DE) og vejer under en angivet 
@@ -151,7 +162,7 @@ namespace OOP_EksamensOpgave2014
         {
             return _salgsListe.Where(a =>
             {
-                var test = a.Sælger.PostNummer;
+                var test = a.Sælger.Postnummer;
                 var min = postnummer - radius;
                 var max = postnummer + radius;
                 return min < test && test < max;

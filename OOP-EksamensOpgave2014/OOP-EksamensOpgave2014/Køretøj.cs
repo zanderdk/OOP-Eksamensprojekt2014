@@ -89,7 +89,7 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
-        abstract public bool Trækkrog {get; set;} //TODO
+        abstract public bool Trækkrog { get; set; } //TODO personbiler til erhverv være udstyret med en trækkrog
 
         public abstract Kørekorttype Kørekorttype { get; }
 
@@ -140,7 +140,7 @@ namespace OOP_EksamensOpgave2014
 	                }
                 }
 
-                if (Årgang < 2010) //TODO: refactor
+                if (Årgang < 2010) //TODO refactor
                 {
                     if (Brændstof == Brændstof.Diesel)
                     {

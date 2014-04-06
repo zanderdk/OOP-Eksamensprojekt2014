@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace OOP_EksamensOpgave2014
+﻿namespace OOP_EksamensOpgave2014
 {
     public interface Sælger : ISaldo
     {
-        int PostNummer { get; set; }
+        int Postnummer { get; set; }
         void ModtagNotifikationOmBud(object sender, Auktion.AuktionArgs args);
     }
 }
