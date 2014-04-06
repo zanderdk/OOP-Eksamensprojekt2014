@@ -67,18 +67,40 @@ namespace OOP_EksamensOpgave2014
             {
                 return false;
             }
-            //TODO
+            if (auk.HøjesteByder == null)
+            {
+                return false;
+            }
+            decimal købspris = auk.MinPris;
+            Køber køber = auk.HøjesteByder;
+
+            køber.Saldo -= købspris;
+            decimal salær = Salær(købspris);
+            auk.Sælger.Saldo += købspris - salær;
+            // salær forsvinder til tomrummet
+
+            _salgsListe.Remove(auk);
+            _solgteKøretøjer.Add(auk);
+
             return true;
         }
-/*Ovenstående metode skal implementeres for at afslutte en handel med et bestemt
-auktionsnummer. Der skal først laves et tjek på at den angivne sælger er identisk med den
-sælger der har sat køretøjet til salg. Såfremt sælgerens identitet er i orden, så afsluttes salget
-ved at købssummen trækkes fra købers saldo (den køber der har afgivet det største accepterede
-bud). Herefter trækker auktionshuset sit salær i overensstemmelse med Tabel 1, og endelig
-indsættes det resterende beløb på sælgers saldo. På dette tidspunkt skal køretøjet ikke længere
-figurere som værende til salg i auktionshuset, men skal i stedet overgå til en liste af solgte
-køretøjer. Listen af solgte køretøjer skal kunne gennemløbes udenfor AuktionsHus klassen.
-Metodens returværdi angiver om handlen blev succesfuldt gennemført.*/
+
+        static private decimal Salær(decimal salgspris)
+        {
+            if (salgspris < 10000)
+                return 1900;
+            if (salgspris < 50000)
+                return 2250;
+            if (salgspris < 100000)
+                return 2550;
+            if (salgspris < 150000)
+                return 2850;
+            if (salgspris < 200000)
+                return 3400;
+            if (salgspris < 300000)
+                return 3700;
+            return 4400;
+        }
 
         // TODO disse retunere Auktioner for now, Det giver ikke rigtig mener at returnere køre tøjer
         // 1) Find køretøjer hvis navn indeholder en angivet søgestreng.
@@ -100,7 +122,7 @@ Metodens returværdi angiver om handlen blev succesfuldt gennemført.*/
             //TODO hmmm
             return _salgsListe
                 .Where(a => a.Køretøj is StortKøretøj)
-                .Select(a => Tuple.Create<Auktion, StortKøretøj>(a, a.Køretøj as StortKøretøj))
+                .Select(a => Tuple.Create(a, a.Køretøj as StortKøretøj))
                 .Where(t => t.Item2.Vægt < maksimalvægt)
                 .Select(t => t.Item1);
         }
@@ -113,7 +135,7 @@ Metodens returværdi angiver om handlen blev succesfuldt gennemført.*/
             //TODO hmmm
             return _salgsListe
                 .Where(a => a.Køretøj is Privatbil)
-                .Select(a => Tuple.Create<Auktion, Privatbil>(a, a.Køretøj as Privatbil))
+                .Select(a => Tuple.Create(a, a.Køretøj as Privatbil))
                 .Where(t => t.Item2.Km < maksimalKm)
                 .Where(t => t.Item1.MinPris < maxMinPris)
                 .OrderBy(t => t.Item2.Km)
