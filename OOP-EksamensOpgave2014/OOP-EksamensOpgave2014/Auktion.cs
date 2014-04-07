@@ -19,20 +19,16 @@ namespace OOP_EksamensOpgave2014
         public decimal MinPris { get; private set; }
         public Auktion(Køretøj køretøj, ISælger sælger, decimal minPris)
         {
+            if (køretøj == null || sælger == null)
+            {
+                throw new ArgumentNullException("sælger og køretøj kan ikke være null.");
+            }
             MinPris = minPris;
             Sælger = sælger;
             _Køretøj = køretøj;
             Auktionsnummer = NextId++;
 
-            if(køretøj == null || sælger == null)
-            {
-                throw new ArgumentNullException("sælger og køretøj kan ikke være null.");
-            }
-
-            _Køretøj = køretøj;
-
             køretøj.Auktion = this;
-
         }
 
         public event EventHandler<AuktionArgs> VedNytBud = delegate { };
