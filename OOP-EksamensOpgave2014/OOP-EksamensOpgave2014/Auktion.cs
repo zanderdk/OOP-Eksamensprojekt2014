@@ -17,23 +17,18 @@ namespace OOP_EksamensOpgave2014
 
 
         public decimal MinPris { get; private set; }
-        // TODO immutable for now, M:Forklar immutable
         public Auktion(Køretøj køretøj, ISælger sælger, decimal minPris)
         {
+            if (køretøj == null || sælger == null)
+            {
+                throw new ArgumentNullException("sælger og køretøj kan ikke være null.");
+            }
             MinPris = minPris;
             Sælger = sælger;
             _Køretøj = køretøj;
             Auktionsnummer = NextId++;
 
-            if(køretøj == null || sælger == null)
-            {
-                throw new ArgumentNullException("sælger og køretøj kan ikke være null.");
-            }
-
-            _Køretøj = køretøj;
-
             køretøj.Auktion = this;
-
         }
 
         public event EventHandler<AuktionArgs> VedNytBud = delegate { };
@@ -61,12 +56,28 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
-        public void AfgivBud(IKøber køber, decimal bud)
-        {
+        public bool AfgivBud(IKøber køber, decimal bud)
+        {       
+            if (this.MinPris >= bud) return false;
+
+            if (køber is Firma)
+            {
+                if (køber.Saldo + (køber as Firma).Kredit < bud) return false;
+            }
+            else
+            {
+                if (køber.Saldo < bud) return false;
+            }
+            
             MinPris = bud;
             HøjesteByder = køber;
             var args = new AuktionArgs(Auktionsnummer, bud);
             _vedNytBud(args);
+            
+            
+            return true;
+
         }
+
     }
 }

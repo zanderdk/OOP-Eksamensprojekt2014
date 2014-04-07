@@ -69,10 +69,10 @@ namespace OOP_EksamensOpgave2014
 
         private static bool ErGyldigtRegistreringsnummer(string value)
         {
-            string mønster = @"^[a-zæøåA-ZÆØÅ]{2}\d{5}$";
+            const string mønster = @"^[a-zæøåA-ZÆØÅ]{2}\d{5}$";
             return Regex.Match(value, mønster).Success;
         }
-        
+
         private decimal _nyPris;
         public decimal NyPris
         {
@@ -118,22 +118,9 @@ namespace OOP_EksamensOpgave2014
             {
                 double brændstofsforbrug = KmPrL;
 
-                if (this is Autocamper) // TODO flyt til metode
+                if (this is Autocamper)
                 {
-                    Varmesystem varm = ((Autocamper) this).Varmesystem;
-
-                    switch (varm)
-	                {
-                        case Varmesystem.Gas:
-                            brændstofsforbrug *= 0.9;
-                            break;
-                        case Varmesystem.Strøm:
-                            brændstofsforbrug *= 0.8;
-                            break;
-                        case Varmesystem.Oliefyr:
-                            brændstofsforbrug *= 0.7;
-                            break;
-	                }
+                    brændstofsforbrug = Autocamper.EnergimærkeRegner(this, brændstofsforbrug);
                 }
 
                 if (Årgang < 2010)

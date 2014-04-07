@@ -36,5 +36,24 @@ namespace OOP_EksamensOpgave2014
         public int Siddepladser { get; set; }
         public int Sovepladser { get; set; }
         public bool Toilet { get; set; }
+
+        internal static double EnergimærkeRegner(Køretøj køretøj, double brændstofsforbrug)
+        {
+            Varmesystem varm = ((Autocamper)køretøj).Varmesystem;
+
+            switch (varm)
+            {
+                case Varmesystem.Gas:
+                    brændstofsforbrug *= 0.9;
+                    break;
+                case Varmesystem.Strøm:
+                    brændstofsforbrug *= 0.8;
+                    break;
+                case Varmesystem.Oliefyr:
+                    brændstofsforbrug *= 0.7;
+                    break;
+             }
+            return brændstofsforbrug;            
+        }
     }
 }
