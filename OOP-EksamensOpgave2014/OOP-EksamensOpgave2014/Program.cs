@@ -6,17 +6,47 @@ namespace OOP_EksamensOpgave2014
     {
         static void Main()
         {
-            var bil = new Privatbil("aa12345" ,"Volvo" ,Brændstof.Benzin, 5.3 ,2013, 4) { Km = 9001, KmPrL = 21};
+            Køretøj bil;
+            try
+            {
+                bil = new Privatbil("aa12345", null, Brændstof.Benzin, 5.3, 2013, 4) { Km = 9001, KmPrL = 21 };
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("Navn må ikke være null");
+            }
+            bil = new Privatbil("aa12345", "Volvo", Brændstof.Benzin, 5.3, 2013, 4) { Km = 9001, KmPrL = 21 };
 
-            var test1 = new Auktion(bil, new Firma(2), 2390);
-            var test2 = new Auktion(bil, new Firma(23), 2390);
-            var test3 = new Auktion(bil, new Firma(23), 2390);
-            var test4 = new Auktion(bil, new Firma(23), 2390);
-            Console.WriteLine(test1.Auktionsnummer);
-            Console.WriteLine(test2.Auktionsnummer);
-            Console.WriteLine(test3.Auktionsnummer);
-            Console.WriteLine(test4.Auktionsnummer);
+            Console.WriteLine("Prøver at sette NyPris til negativ");
+            bil.NyPris = -12;
+            Console.WriteLine("Billens værdi er nu: " + bil.NyPris);
 
+            try
+            {
+                bil.Registreringsnummer = "A432";
+            }
+            catch (RegistreringnummerException)
+            {
+                Console.WriteLine("Har prøvet at sætte Registreringsnummer til noget ulovligt");
+            }
+            Console.WriteLine("\nUdskriv bil:");
+            Console.WriteLine(bil);
+            Console.WriteLine("\n");
+
+            try
+            {
+                bil.Motorstørrelse = 11;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("\nMotorstørrelse er for stor til personbil");
+            }
+            // men 11 er ikke for stor til en bus
+            Køretøj bus = new Bus("df78645", "Opel", Brændstof.Diesel, 11, 2010){KmPrL = 8};
+
+            Console.WriteLine("Udregning af forskellige energi klasser:");
+            Console.WriteLine(bus.Energiklasse);
+            Console.WriteLine(bil.Energiklasse);
             /*Eksempel: En benzin-drevet autocamper fra 2007 der kører 18.5 km/l (klasse A) vil med
             oliefyr havne i klasse C (18.5 * 0.7 = 12.95), mens en strøm-udgave vil havne i klasse B
             (18.5 * 0.8 = 14.8)*/
@@ -26,6 +56,7 @@ namespace OOP_EksamensOpgave2014
             Console.WriteLine(auto.Energiklasse);
 
             Console.ReadLine();
+            
             // TODO "hardcodet" demonstration af funktionaliteten
         }
     }
