@@ -170,11 +170,6 @@ namespace OOP_EksamensOpgave2014
             } 
         }
 
-        public static bool operator ==(Køretøj k1, Køretøj k2)
-        {
-            return k1.Equals(k2);
-        }
-
         public override bool Equals(object obj)
         {
             if(obj == null)
