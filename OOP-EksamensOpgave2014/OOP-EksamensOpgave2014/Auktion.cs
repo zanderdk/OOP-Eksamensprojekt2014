@@ -31,7 +31,7 @@ namespace OOP_EksamensOpgave2014
             køretøj.Auktion = this;
         }
 
-        public event EventHandler<AuktionArgs> VedNytBud = delegate { };
+        public event EventHandler<AuktionArgs> VedNytBud = delegate {};
         protected virtual void _vedNytBud(AuktionArgs e)
         {
             VedNytBud(this, e);
@@ -72,8 +72,8 @@ namespace OOP_EksamensOpgave2014
             MinPris = bud;
             HøjesteByder = køber;
             var args = new AuktionArgs(Auktionsnummer, bud);
+
             _vedNytBud(args);
-            
             
             return true;
 
