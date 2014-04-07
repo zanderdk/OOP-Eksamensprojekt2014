@@ -14,30 +14,20 @@ namespace OOP_EksamensOpgave2014
 
         private readonly List<Auktion> _salgsListe;
         private readonly List<Auktion> _solgteKøretøjer;
-        public IEnumerable<Auktion> SolgteKøretøjer
-        {
-            get
-            {
-                foreach (Auktion auktion in _solgteKøretøjer)
-                {
-                    yield return auktion;
-                }
-            }
-        }
 
         public int SætTilSalg(Køretøj k, ISælger s, decimal minPris)
         {
             return SætTilSalg(k, s, minPris, s.ModtagNotifikationOmBud);
         }
 
-        public int SætTilSalg(Køretøj k, ISælger s, decimal minPris, EventHandler<Auktion.AuktionArgs> notifikationsMetode) 
+        public int SætTilSalg(Køretøj k, ISælger s, decimal minPris, EventHandler<Auktion.AuktionArgs> notifikationsMetode)
         {
             Auktion nyAuktion = new Auktion(k, s, minPris);
             _salgsListe.Add(nyAuktion);
             nyAuktion.VedNytBud += notifikationsMetode;
 
             return nyAuktion.Auktionsnummer;
-            // TODO test event delegate M: Delegate?
+            // TODO test event delegate
         }
 
         public bool ModtagBud(IKøber køber, int auktionsNummer, decimal bud)
@@ -47,19 +37,8 @@ namespace OOP_EksamensOpgave2014
             {
                 throw new InvalidOperationException("Kan ikke find auktionsNummer");
             }
-            if (auk.MinPris >= bud) return false; //TODO move shit
 
-            if (køber is Firma)
-            {
-                if (køber.Saldo + (køber as Firma).Kredit < bud) return false;
-            }
-            else
-            {
-                if (køber.Saldo < bud) return false;
-            }
-            
-            auk.AfgivBud(køber, bud);
-            return true;
+            return auk.AfgivBud(køber, bud);
         }
 
         public bool AccepterBud(ISælger sælger, int auktionsNummer)
@@ -108,40 +87,43 @@ namespace OOP_EksamensOpgave2014
             return 4400;
         }
 
-        // TODO disse retunere Auktioner for now, Det giver ikke rigtig mener at returnere køre tøjer
         // 1) Find køretøjer hvis navn indeholder en angivet søgestreng.
-        public IEnumerable<Auktion> Søg(string søgestreng)
+        public IEnumerable<Køretøj> Søg(string søgestreng)
         {
-            return _salgsListe.Where(a => a.Køretøj.Navn.Contains(søgestreng));
+            return _salgsListe.Select(a => a.Køretøj)
+                .Where(k => k.Navn.Contains(søgestreng));
         }
 
         // 2) Find køretøjer der har et minimum angivet antal siddepladser samt toiletfaciliteter.
-        public IEnumerable<Auktion> Pladser(int antal)
+        public IEnumerable<Køretøj> Pladser(int antal)
         {
-            return _salgsListe.Where(a => a.Køretøj is IBeboelig)
-                .Where(a => (a.Køretøj as IBeboelig).Toilet)
-                .Where(a => (a.Køretøj as IBeboelig).Siddepladser >= antal);
+            return _salgsListe.Select(a => a.Køretøj)
+                .OfType<IBeboelig>()
+                .Where(k => k.Toilet)
+                .Where(k => k.Siddepladser >= antal)
+                .Select(k => k as Køretøj);
         }
 
-        // 3) Find køretøjer der kræver stort kørekort (kategori C, D, CE eller DE) og vejer under en angivet 
+        // 3) Find køretøjer der kræver stort kørekort (kategori C, D, CE eller DE) og vejer under en angivet
         // maksimalvægt.
-        public IEnumerable<Auktion> StortKørekort(double maksimalvægt)
+        public IEnumerable<Køretøj> StortKørekort(double maksimalvægt)
         {
-            return _salgsListe
-                .Where(a => a.Køretøj is StortKøretøj)
-                .Where(a => (a.Køretøj as StortKøretøj).Vægt < maksimalvægt);
+            return _salgsListe.Select(a => a.Køretøj)
+                .OfType<StortKøretøj>()
+                .Where(k => k.Vægt < maksimalvægt)
+                .Select(k => k as Køretøj);
         }
 
         // 4) Find alle personbiler til privatbrug som har kørt under et angivet antal km, og hvor minimum
         // salgsprisen samtidig ligger under et angivet beløb. Køretøjerne skal returneres i sorteret
         // rækkefølge efter antal kørte km.
-        public IEnumerable<Auktion> PrivatBiler(double maksimalKm, decimal maxMinPris)
+        public IEnumerable<Køretøj> PrivatBiler(double maksimalKm, decimal maxMinPris)
         {
-            return _salgsListe
-                .Where(a => a.Køretøj is Privatbil)
-                .Where(t => t.Køretøj.Km < maksimalKm)
-                .Where(t => t.MinPris < maxMinPris)
-                .OrderBy(t => t.Køretøj.Km);
+            return _salgsListe.Select(a => a.Køretøj)
+                .Where(k => k is Privatbil)
+                .Where(k => k.Km < maksimalKm)
+                .Where(k => k.Auktion.MinPris < maxMinPris)
+                .OrderBy(k => k.Km);
         }
 
         // 5) Find alle køretøjer hvor køretøjets sælger er bosiddende inden for en bestemt radius af et
@@ -149,7 +131,7 @@ namespace OOP_EksamensOpgave2014
         // til/trækkes fra postnummeret. F.eks. vil en søgning efter køretøjer indenfor en radius af 1500 fra
         // postnummer 8000, inkludere alle køretøjer hvor sælgers postnummer ligger mellem 6500 og
         // 9500.
-        public IEnumerable<Auktion> Nærliggende(int postnummer, int radius)
+        public IEnumerable<Køretøj> Nærliggende(int postnummer, int radius)
         {
             return _salgsListe.Where(a =>
             {
@@ -157,7 +139,7 @@ namespace OOP_EksamensOpgave2014
                 int min = postnummer - radius;
                 int max = postnummer + radius;
                 return min <= post && post <= max;
-            });
+            }).Select(a => a.Køretøj);
         }
 
         // Til slut, lav en metode der returnerer den gennemsnitlige energi-klasse for alle køretøjer til salg. I den
@@ -168,7 +150,17 @@ namespace OOP_EksamensOpgave2014
         {
             double gennemsnit = _salgsListe.Average(a => (int)a.Køretøj.Energiklasse);
             int afrundet = Convert.ToInt32(gennemsnit);
-            return (Energiklasse) afrundet;
+            return (Energiklasse)afrundet;
+        }
+
+        // Listen af solgte køretøjer skal kunne gennemløbes udenfor AuktionsHus klassen.
+        public IEnumerable<Auktion> SolgteKøretøjer
+        {
+            get
+            {
+                foreach (Auktion auktion in _solgteKøretøjer)
+                    yield return auktion;
+            }
         }
     }
 }
