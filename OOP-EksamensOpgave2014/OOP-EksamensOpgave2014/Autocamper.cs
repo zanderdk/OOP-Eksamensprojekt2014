@@ -12,7 +12,7 @@ namespace OOP_EksamensOpgave2014
         {
             Varmesystem = varmesystem;
             Siddepladser = siddepladser;
-            Sovepladser = Sovepladser;
+            Sovepladser = sovepladser;
         }
 
         public override Kørekorttype Kørekorttype

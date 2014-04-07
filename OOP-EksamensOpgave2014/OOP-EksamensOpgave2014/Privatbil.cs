@@ -7,8 +7,8 @@ namespace OOP_EksamensOpgave2014
     {
         public bool IsofixBeslag;
 
-        public Privatbil(String registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang)
-            : base(registreringsnummer, navn, brændstof, motorStørelse, årgang)
+        public Privatbil(String registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang, int sæder)
+            : base(registreringsnummer, navn, brændstof, motorStørelse, årgang, sæder)
         {
         }
 
