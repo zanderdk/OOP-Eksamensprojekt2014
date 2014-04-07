@@ -87,7 +87,6 @@ namespace OOP_EksamensOpgave2014
             return 4400;
         }
 
-        // TODO disse retunere Auktioner for now, Det giver ikke rigtig mener at returnere køre tøjer
         // 1) Find køretøjer hvis navn indeholder en angivet søgestreng.
         public IEnumerable<Køretøj> Søg(string søgestreng)
         {
@@ -160,9 +159,7 @@ namespace OOP_EksamensOpgave2014
             get
             {
                 foreach (Auktion auktion in _solgteKøretøjer)
-                {
                     yield return auktion;
-                }
             }
         }
     }
