@@ -1,6 +1,6 @@
 ﻿namespace OOP_EksamensOpgave2014
 {
-    public class Bus : StortKøretøj, ISoveable
+    public class Bus : StortKøretøj, IBeboelig
     {
         public Bus(Brændstof brændstof, int årgang) : base(brændstof, årgang)
         {

@@ -2,7 +2,7 @@
 
 namespace OOP_EksamensOpgave2014
 {
-    class Privatperson : Køber, Sælger
+    class Privatperson : IKøber, ISælger
     {
         public readonly int CPRnummer;
 

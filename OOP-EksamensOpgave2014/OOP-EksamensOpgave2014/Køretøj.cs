@@ -99,7 +99,7 @@ namespace OOP_EksamensOpgave2014
             get { return _motorstørrelse; }
             set
             {
-                if (MaxMotorstørrelse <= value && value <= MaxMotorstørrelse)
+                if (MinMotorstørrelse <= value && value <= MaxMotorstørrelse)
                 {
                     _motorstørrelse = value;
                 }

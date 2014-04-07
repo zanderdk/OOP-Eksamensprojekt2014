@@ -2,7 +2,7 @@
 
 namespace OOP_EksamensOpgave2014
 {
-    public class Firma : Køber, Sælger
+    public class Firma : IKøber, ISælger
     {
         public readonly int CVRnummer;
 

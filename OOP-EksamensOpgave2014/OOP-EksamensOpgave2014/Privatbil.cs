@@ -10,7 +10,6 @@ namespace OOP_EksamensOpgave2014
         public Privatbil(Brændstof brændstof, int årgang)
             : base(brændstof, årgang)
         {
-            
         }
 
         // TODO vi skal havde kigget på sæder
@@ -19,7 +18,7 @@ namespace OOP_EksamensOpgave2014
             get { return _antalSæder; }
             set
             {
-                if (2 <= value && value >= 7)
+                if (2 <= value && value <= 7)
                 {
                     throw new ArgumentOutOfRangeException("value");
                 }

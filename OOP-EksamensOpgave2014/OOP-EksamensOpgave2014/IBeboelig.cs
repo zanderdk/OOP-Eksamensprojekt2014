@@ -1,6 +1,6 @@
 ﻿namespace OOP_EksamensOpgave2014
 {
-    public interface ISoveable //TODO navn
+    public interface IBeboelig
     {
         int Siddepladser { get; set; }
         int Sovepladser { get; set; }

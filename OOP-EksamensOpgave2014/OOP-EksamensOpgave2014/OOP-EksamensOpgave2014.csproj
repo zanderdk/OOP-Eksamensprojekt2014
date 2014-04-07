@@ -50,8 +50,8 @@
     <Compile Include="Erhvervbil.cs" />
     <Compile Include="Firma.cs" />
     <Compile Include="ISaldo.cs" />
-    <Compile Include="ISoveable.cs" />
-    <Compile Include="Køber.cs" />
+    <Compile Include="IBeboelig.cs" />
+    <Compile Include="IKøber.cs" />
     <Compile Include="Kørekorttype.cs" />
     <Compile Include="Køretøj.cs" />
     <Compile Include="Lastbil.cs" />
@@ -63,7 +63,7 @@
     <Compile Include="RegistreringnummerException.cs" />
     <Compile Include="Auktion.cs" />
     <Compile Include="StortKøretøj.cs" />
-    <Compile Include="Sælger.cs" />
+    <Compile Include="ISælger.cs" />
     <Compile Include="Varmesystem.cs" />
   </ItemGroup>
   <ItemGroup>
