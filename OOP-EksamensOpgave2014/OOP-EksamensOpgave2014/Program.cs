@@ -69,9 +69,30 @@ namespace OOP_EksamensOpgave2014
 
             int mId = carAway.SætTilSalg(bus, mærsk, 50000);
             int aId = carAway.SætTilSalg(bil, alice, 70000);
+            //aId = carAway.SætTilSalg(bil, alice, 70000); Det kan hun da ikke
             int gId = carAway.SætTilSalg(auto, glCars, 10000);
 
+            carAway.ModtagBud(bob, aId, 80000);
+            carAway.ModtagBud(mærsk, aId, 90000);
+            carAway.ModtagBud(bob, aId, 95000);
+            carAway.ModtagBud(mærsk, aId, 97000);
             carAway.ModtagBud(bob, aId, 100000);
+            carAway.ModtagBud(glCars, aId, 105000);// Det har de ikke penge til
+
+            Console.WriteLine("Før biler er solgt er alices saldo: " + alice.Saldo);
+            Console.WriteLine("Før biler er solgt er bobs saldo: " + bob.Saldo);
+            if (carAway.AccepterBud(alice, aId))
+            {
+                Console.WriteLine("Bilen er solgt!!");
+                Console.WriteLine("Efter biler er solgt er alices saldo: " + alice.Saldo);
+                Console.WriteLine("Efter biler er solgt er bobs saldo: " + bob.Saldo);
+            }
+            Console.WriteLine("\nVi kan nu genneløbe de solgte køretøjer:");
+            foreach (Auktion auk in carAway.SolgteKøretøjer)
+            {
+                Console.WriteLine(auk.Køretøj);
+            }
+            
 
             Console.ReadLine();
             

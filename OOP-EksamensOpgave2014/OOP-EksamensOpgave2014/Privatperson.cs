@@ -32,7 +32,7 @@ namespace OOP_EksamensOpgave2014
 
         public void ModtagNotifikationOmBud(object sender, Auktion.AuktionArgs args)
         {
-            Console.WriteLine("Person med CPR " + CPRnummer + " har modtager et bud på auktion #" + args.Auktionsnummer + " på " + args.Bud + "kr");
+            Console.WriteLine("Person med CPR " + CPRnummer + " har modtager et bud på auktion #" + args.Auktionsnummer + " på " + args.Bud + " kr");
         }
     }
 }
