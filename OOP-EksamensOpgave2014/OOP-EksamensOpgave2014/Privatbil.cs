@@ -3,14 +3,13 @@
 namespace OOP_EksamensOpgave2014
 {
     // Personbil til privat brug
-    class Privatbil : Personbil
+    public class Privatbil : Personbil
     {
         public bool IsofixBeslag;
 
         public Privatbil(Brændstof brændstof, int årgang)
             : base(brændstof, årgang)
         {
-            
         }
 
         // TODO vi skal havde kigget på sæder
@@ -19,7 +18,7 @@ namespace OOP_EksamensOpgave2014
             get { return _antalSæder; }
             set
             {
-                if (2 <= value && value >= 7)
+                if (2 <= value && value <= 7)
                 {
                     throw new ArgumentOutOfRangeException("value");
                 }

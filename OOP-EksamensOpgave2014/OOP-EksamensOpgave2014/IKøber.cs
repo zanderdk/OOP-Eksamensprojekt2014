@@ -1,6 +1,6 @@
 ﻿namespace OOP_EksamensOpgave2014
 {
-    public interface Køber : ISaldo
+    public interface IKøber : ISaldo
     {
 
     }

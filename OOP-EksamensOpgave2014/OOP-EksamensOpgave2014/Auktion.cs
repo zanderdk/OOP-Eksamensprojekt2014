@@ -11,14 +11,14 @@ namespace OOP_EksamensOpgave2014
 
         }
 
-        public readonly Sælger Sælger;
+        public readonly ISælger Sælger;
         public readonly int Auktionsnummer;
-        public Køber HøjesteByder { get; set; }
+        public IKøber HøjesteByder { get; set; }
 
 
         public decimal MinPris { get; private set; }
         // TODO immutable for now, M:Forklar immutable
-        public Auktion(Køretøj køretøj, Sælger sælger, decimal minPris)
+        public Auktion(Køretøj køretøj, ISælger sælger, decimal minPris)
         {
             MinPris = minPris;
             Sælger = sælger;
@@ -61,7 +61,7 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
-        public void AfgivBud(Køber køber, decimal bud)
+        public void AfgivBud(IKøber køber, decimal bud)
         {
             MinPris = bud;
             HøjesteByder = køber;

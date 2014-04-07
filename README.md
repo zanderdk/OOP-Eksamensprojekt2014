@@ -22,6 +22,8 @@ Man laver aldrig om på brændstofs typen.
 
 Ingen verifisering af cpr og cvr
 
+Vi konvertere til 0 1 2 3, det skulle gerne give det samme resultat
+
 ## Kilder
 msdn.microsoft.com
 

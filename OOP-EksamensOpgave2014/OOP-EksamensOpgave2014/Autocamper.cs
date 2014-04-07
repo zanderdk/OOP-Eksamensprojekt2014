@@ -2,7 +2,7 @@
 
 namespace OOP_EksamensOpgave2014
 {
-    public class Autocamper : Køretøj, ISoveable
+    public class Autocamper : Køretøj, IBeboelig
     {
 
         public Varmesystem Varmesystem;

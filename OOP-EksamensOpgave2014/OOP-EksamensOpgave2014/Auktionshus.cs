@@ -6,9 +6,6 @@ namespace OOP_EksamensOpgave2014
 {
     public class Auktionshus
     {
-
-
-
         public Auktionshus()
         {
             _salgsListe = new List<Auktion>();
@@ -21,19 +18,19 @@ namespace OOP_EksamensOpgave2014
         {
             get
             {
-                foreach (var auktion in _solgteKøretøjer)
+                foreach (Auktion auktion in _solgteKøretøjer)
                 {
-                    yield return auktion; // M:Yield?
+                    yield return auktion;
                 }
             }
         }
 
-        public int SætTilSalg(Køretøj k, Sælger s, decimal minPris)
+        public int SætTilSalg(Køretøj k, ISælger s, decimal minPris)
         {
             return SætTilSalg(k, s, minPris, s.ModtagNotifikationOmBud);
         }
 
-        public int SætTilSalg(Køretøj k, Sælger s, decimal minPris, EventHandler<Auktion.AuktionArgs> notifikationsMetode) 
+        public int SætTilSalg(Køretøj k, ISælger s, decimal minPris, EventHandler<Auktion.AuktionArgs> notifikationsMetode) 
         {
             Auktion nyAuktion = new Auktion(k, s, minPris);
             _salgsListe.Add(nyAuktion);
@@ -43,30 +40,29 @@ namespace OOP_EksamensOpgave2014
             // TODO test event delegate M: Delegate?
         }
 
-        public bool ModtagBud(Køber køber, int auktionsNummer, decimal bud)
+        public bool ModtagBud(IKøber køber, int auktionsNummer, decimal bud)
         {
-            //TODO skal vi bruge var? M: Var, fordele ved implicit defination?
-            var auk = _salgsListe.Find(a => a.Auktionsnummer == auktionsNummer);
+            Auktion auk = _salgsListe.Find(a => a.Auktionsnummer == auktionsNummer);
             if (auk == null)
             {
                 throw new InvalidOperationException("Kan ikke find auktionsNummer");
             }
-            if (auk.MinPris >= bud) return false;
+            if (auk.MinPris >= bud) return false; //TODO move shit
 
             if (køber is Firma)
             {
-                if (køber.Saldo + (køber as Firma).Kredit <= bud) return false;
+                if (køber.Saldo + (køber as Firma).Kredit < bud) return false;
             }
             else
             {
-                if (køber.Saldo <= bud) return false;
+                if (køber.Saldo < bud) return false;
             }
             
             auk.AfgivBud(køber, bud);
             return true;
         }
 
-        public bool AccepterBud(Sælger sælger, int auktionsNummer)
+        public bool AccepterBud(ISælger sælger, int auktionsNummer)
         {
             var auk = _salgsListe.Find(a => a.Auktionsnummer == auktionsNummer);
             if (auk == null)
@@ -82,7 +78,7 @@ namespace OOP_EksamensOpgave2014
                 return false;
             }
             decimal købspris = auk.MinPris;
-            Køber køber = auk.HøjesteByder;
+            IKøber køber = auk.HøjesteByder;
 
             køber.Saldo -= købspris;
             decimal salær = Salær(købspris);
@@ -122,10 +118,9 @@ namespace OOP_EksamensOpgave2014
         // 2) Find køretøjer der har et minimum angivet antal siddepladser samt toiletfaciliteter.
         public IEnumerable<Auktion> Pladser(int antal)
         {
-            //TODO hmmm
-            return _salgsListe.Where(a => a.Køretøj is ISoveable)
-                .Where(a => (a.Køretøj as ISoveable).Toilet)
-                .Where(a => (a.Køretøj as ISoveable).Siddepladser >= antal);
+            return _salgsListe.Where(a => a.Køretøj is IBeboelig)
+                .Where(a => (a.Køretøj as IBeboelig).Toilet)
+                .Where(a => (a.Køretøj as IBeboelig).Siddepladser >= antal);
         }
 
         // 3) Find køretøjer der kræver stort kørekort (kategori C, D, CE eller DE) og vejer under en angivet 
@@ -158,10 +153,10 @@ namespace OOP_EksamensOpgave2014
         {
             return _salgsListe.Where(a =>
             {
-                var test = a.Sælger.Postnummer;
-                var min = postnummer - radius;
-                var max = postnummer + radius;
-                return min < test && test < max;
+                int post = a.Sælger.Postnummer;
+                int min = postnummer - radius;
+                int max = postnummer + radius;
+                return min <= post && post <= max;
             });
         }
 

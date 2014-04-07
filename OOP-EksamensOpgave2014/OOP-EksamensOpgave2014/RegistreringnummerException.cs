@@ -2,7 +2,7 @@
 
 namespace OOP_EksamensOpgave2014
 {
-    class RegistreringnummerException : Exception
+    public class RegistreringnummerException : Exception
     {
         public RegistreringnummerException() {}
         public RegistreringnummerException(string s)
