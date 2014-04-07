@@ -8,10 +8,6 @@ namespace OOP_EksamensOpgave2014
         {
             var bil = new Privatbil("aa12345" ,"Volvo" ,Brændstof.Benzin, 5.3 ,2013, 4) { Km = 9001, KmPrL = 21};
 
-            Console.WriteLine(bil.ToString());
-            Console.WriteLine(bil.Registreringsnummer);
-            Console.WriteLine(bil.Kørekorttype);
-
             var test1 = new Auktion(bil, new Firma(2), 2390);
             var test2 = new Auktion(bil, new Firma(23), 2390);
             var test3 = new Auktion(bil, new Firma(23), 2390);

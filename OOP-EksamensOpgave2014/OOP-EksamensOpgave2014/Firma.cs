@@ -11,7 +11,6 @@ namespace OOP_EksamensOpgave2014
             this.CVRnummer = CVRnummer;
         }
 
-
         private decimal _kredit;
 
         public decimal Kredit
