@@ -20,9 +20,13 @@ namespace OOP_EksamensOpgave2014
             {
                 if (2 <= value && value <= 7)
                 {
+                    _antalSæder = value;
+                }
+                else
+                {
                     throw new ArgumentOutOfRangeException("value");
                 }
-                _antalSæder = value;
+                
             }
         }
 
