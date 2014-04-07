@@ -31,7 +31,6 @@ namespace OOP_EksamensOpgave2014
             }
             Console.WriteLine("\nUdskriv bil:");
             Console.WriteLine(bil);
-            Console.WriteLine("\n");
 
             try
             {
@@ -42,9 +41,9 @@ namespace OOP_EksamensOpgave2014
                 Console.WriteLine("\nMotorstørrelse er for stor til personbil");
             }
             // men 11 er ikke for stor til en bus
-            Køretøj bus = new Bus("df78645", "Opel", Brændstof.Diesel, 11, 2010){KmPrL = 8};
+            Køretøj bus = new Bus("df78645", "Opel", Brændstof.Diesel, 11, 2010){KmPrL = 8, Trækkrog = true};
 
-            Console.WriteLine("Udregning af forskellige energi klasser:");
+            Console.WriteLine("\nUdregning af forskellige energiklasser:");
             Console.WriteLine(bus.Energiklasse);
             Console.WriteLine(bil.Energiklasse);
             /*Eksempel: En benzin-drevet autocamper fra 2007 der kører 18.5 km/l (klasse A) vil med
@@ -54,6 +53,25 @@ namespace OOP_EksamensOpgave2014
             Console.WriteLine(auto.Energiklasse);
             auto.Varmesystem = Varmesystem.Strøm;
             Console.WriteLine(auto.Energiklasse);
+
+            Console.WriteLine("\nUdregning af forskellige Kørekorttyper:");
+            Console.WriteLine(bus.Kørekorttype);
+            Console.WriteLine(bil.Kørekorttype);
+            Console.WriteLine(auto.Kørekorttype);
+
+            Console.WriteLine("\n");
+            // Laver auktionshus og folk til at sælge og købe
+            Auktionshus carAway = new Auktionshus();
+            Firma mærsk = new Firma(22756214){Postnummer = 1250, Saldo = 9000000000, Kredit = 0};
+            Firma glCars = new Firma(23984723){Postnummer = 8850, Saldo = 15000, Kredit = 40000};
+            Privatperson alice = new Privatperson(1101702222){Postnummer = 9000, Saldo = 0};
+            Privatperson bob = new Privatperson(0101701111){Postnummer = 9000, Saldo = 200000};
+
+            int mId = carAway.SætTilSalg(bus, mærsk, 50000);
+            int aId = carAway.SætTilSalg(bil, alice, 70000);
+            int gId = carAway.SætTilSalg(auto, glCars, 10000);
+
+            carAway.ModtagBud(bob, aId, 100000);
 
             Console.ReadLine();
             
