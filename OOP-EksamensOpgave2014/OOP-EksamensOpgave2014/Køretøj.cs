@@ -154,6 +154,7 @@ namespace OOP_EksamensOpgave2014
             get { return _Auktion; } 
             set 
             {
+
                 if(value == null)
                 {
                     throw new ArgumentNullException("Auktion kan ikke være null.");
