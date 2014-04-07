@@ -170,6 +170,32 @@ namespace OOP_EksamensOpgave2014
             } 
         }
 
+        public static bool operator ==(Køretøj k1, Køretøj k2)
+        {
+            return k1.Equals(k2);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if(obj == null)
+            {
+                return false;
+            }
+
+            Køretøj k = obj as Køretøj;
+            if(k == null)
+            {
+                return false;
+            }
+
+            if (this.Registreringsnummer == k.Registreringsnummer)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public override string ToString() // TODO giv en sigende beskrivelse af køretøjet
         {
             return string.Format("Navn: {0}\nKilometer kørt: {1}\nKilometer Pr Liter: {2}\nEnergiklasse: {3}",Navn,Km,KmPrL,Energiklasse);
