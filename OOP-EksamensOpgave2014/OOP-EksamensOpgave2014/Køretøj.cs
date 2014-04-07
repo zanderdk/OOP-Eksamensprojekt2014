@@ -163,6 +163,26 @@ namespace OOP_EksamensOpgave2014
             return Energiklasse.D;
         }
 
+        private Auktion _Auktion;
+        public Auktion Auktion { 
+            get { return _Auktion; } 
+            set 
+            {
+                if(value == null)
+                {
+                    throw new ArgumentNullException("Auktion kan ikke være null.");
+                }
+
+                if(value.Køretøj != this)
+                {
+                    throw new ArgumentException("Kun auktioner kan sætte denne property.");
+                }
+
+                _Auktion = value;
+
+            } 
+        }
+
         public override string ToString() // TODO giv en sigende beskrivelse af køretøjet
         {
             return string.Format("Navn: {0}\nKilometer kørt: {1}\nKilometer Pr Liter: {2}\nEnergiklasse: {3}",Navn,Km,KmPrL,Energiklasse);

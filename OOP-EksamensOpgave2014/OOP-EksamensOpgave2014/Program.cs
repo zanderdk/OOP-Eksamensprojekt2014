@@ -7,6 +7,7 @@ namespace OOP_EksamensOpgave2014
         static void Main()
         {
             var bil = new Privatbil(Brændstof.Benzin, 2013) { Registreringsnummer = "aa12345", Navn = "Volvo", Km = 9001, KmPrL = 21};
+
             Console.WriteLine(bil.ToString());
             Console.WriteLine(bil.Registreringsnummer);
             Console.WriteLine(bil.Kørekorttype);
@@ -29,7 +30,6 @@ namespace OOP_EksamensOpgave2014
             Console.WriteLine(auto.Energiklasse);
 
             Console.ReadLine();
-
             // TODO "hardcodet" demonstration af funktionaliteten
         }
     }
