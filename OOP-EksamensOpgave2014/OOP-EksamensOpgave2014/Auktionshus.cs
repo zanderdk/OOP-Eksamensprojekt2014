@@ -22,6 +22,10 @@ namespace OOP_EksamensOpgave2014
 
         public int SætTilSalg(Køretøj k, ISælger s, decimal minPris, EventHandler<Auktion.AuktionArgs> notifikationsMetode)
         {
+            if(ErKøretøjTilsalg(k))
+            {
+                throw new ArgumentException("Kan ikke have flere instancer af samme køre tøj til salg på en gang.");
+            }
             Auktion nyAuktion = new Auktion(k, s, minPris);
             _salgsListe.Add(nyAuktion);
             nyAuktion.VedNytBud += notifikationsMetode;
@@ -68,6 +72,15 @@ namespace OOP_EksamensOpgave2014
             _solgteKøretøjer.Add(auk);
 
             return true;
+        }
+
+        public bool ErKøretøjTilsalg(Køretøj køretøj)
+        {
+            if(køretøj.Auktion == null)
+            {
+                return false;
+            }
+            return _salgsListe.Contains(køretøj.Auktion);
         }
 
         static private decimal Salær(decimal salgspris)
