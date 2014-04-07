@@ -2,7 +2,7 @@
 {
     public abstract class Personbil : Køretøj
     {
-        protected Personbil(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        protected Personbil(string registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang) : base(registreringsnummer, navn, brændstof, motorStørelse, årgang)
         {
         }
 

@@ -2,7 +2,8 @@
 {
     public class Bus : StortKøretøj, IBeboelig
     {
-        public Bus(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        public Bus(string registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang)
+            : base(registreringsnummer, navn ,brændstof, motorStørelse, årgang)
         {
         }
 

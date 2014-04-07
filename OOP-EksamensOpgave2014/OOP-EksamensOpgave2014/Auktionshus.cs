@@ -135,7 +135,7 @@ namespace OOP_EksamensOpgave2014
         // 4) Find alle personbiler til privatbrug som har kørt under et angivet antal km, og hvor minimum
         // salgsprisen samtidig ligger under et angivet beløb. Køretøjerne skal returneres i sorteret
         // rækkefølge efter antal kørte km.
-        public IEnumerable<Auktion> PrivatBiler(decimal maksimalKm, decimal maxMinPris)
+        public IEnumerable<Auktion> PrivatBiler(double maksimalKm, decimal maxMinPris)
         {
             return _salgsListe
                 .Where(a => a.Køretøj is Privatbil)

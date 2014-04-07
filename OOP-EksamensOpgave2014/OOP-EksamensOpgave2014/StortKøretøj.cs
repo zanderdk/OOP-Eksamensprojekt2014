@@ -8,7 +8,8 @@ namespace OOP_EksamensOpgave2014
         public double Længde;
         public double Vægt;
 
-        protected StortKøretøj(Brændstof brændstof, int årgang) : base(brændstof, årgang)
+        protected StortKøretøj(string registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang)
+            : base(registreringsnummer, navn, brændstof, motorStørelse, årgang)
         {
             if (brændstof == Brændstof.Benzin)
             {

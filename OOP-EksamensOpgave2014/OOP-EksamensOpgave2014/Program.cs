@@ -6,7 +6,7 @@ namespace OOP_EksamensOpgave2014
     {
         static void Main()
         {
-            var bil = new Privatbil(Brændstof.Benzin, 2013) { Registreringsnummer = "aa12345", Navn = "Volvo", Km = 9001, KmPrL = 21};
+            var bil = new Privatbil("aa12345" ,"Volvo" ,Brændstof.Benzin, 5.3 ,2013) { Km = 9001, KmPrL = 21};
 
             Console.WriteLine(bil.ToString());
             Console.WriteLine(bil.Registreringsnummer);
@@ -24,7 +24,7 @@ namespace OOP_EksamensOpgave2014
             /*Eksempel: En benzin-drevet autocamper fra 2007 der kører 18.5 km/l (klasse A) vil med
             oliefyr havne i klasse C (18.5 * 0.7 = 12.95), mens en strøm-udgave vil havne i klasse B
             (18.5 * 0.8 = 14.8)*/
-            var auto = new Autocamper(Brændstof.Benzin, 2007, Varmesystem.Oliefyr) {KmPrL = 18.5,};
+            var auto = new Autocamper("aa12343", "dfgsdfg" , Brændstof.Benzin, 6.0 , 2007 , Varmesystem.Oliefyr, 2, 4) {KmPrL = 18.5,};
             Console.WriteLine(auto.Energiklasse);
             auto.Varmesystem = Varmesystem.Strøm;
             Console.WriteLine(auto.Energiklasse);

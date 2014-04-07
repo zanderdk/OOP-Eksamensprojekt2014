@@ -5,9 +5,13 @@ namespace OOP_EksamensOpgave2014
 {
     public abstract class Køretøj
     {
-        protected Køretøj(Brændstof brændstof, int årgang)
+
+        public Køretøj(string registreringsnummer, string navn , Brændstof brændstof, double motorStørelse, int årgang)
         {
+            Navn = navn;
+            Registreringsnummer = registreringsnummer;
             Brændstof = brændstof;
+            Motorstørrelse = motorStørelse;
             Årgang = årgang;
         }
 
@@ -28,8 +32,8 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
-        private decimal _km;
-        public decimal Km
+        private double _km;
+        public double Km
         {
             get { return _km; }
             set
