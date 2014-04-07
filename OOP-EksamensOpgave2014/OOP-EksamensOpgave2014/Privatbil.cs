@@ -12,7 +12,6 @@ namespace OOP_EksamensOpgave2014
         {
         }
 
-        // TODO vi skal havde kigget på sæder
         public override int AntalSæder
         {
             get { return _antalSæder; }

@@ -11,7 +11,27 @@ namespace OOP_EksamensOpgave2014
             this.CVRnummer = CVRnummer;
         }
 
-        public decimal Kredit { get; set; } //TODO hvad gør vi hvis man ændre kredit og er i undeskud?s
+
+        private decimal _kredit;
+
+        public decimal Kredit
+        {
+            get { return _kredit; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("value");
+                }
+                if (Saldo < -value )
+                {
+                    throw new ArgumentException("Kan ikke hæve kredit til over det der skyldes");
+                }
+
+                _kredit = value;
+            }
+        }
+        
         private decimal _saldo;
         public decimal Saldo
         {
