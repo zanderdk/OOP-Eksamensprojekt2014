@@ -5,8 +5,7 @@ namespace OOP_EksamensOpgave2014
 {
     public abstract class Køretøj
     {
-
-        public Køretøj(string registreringsnummer, string navn , Brændstof brændstof, double motorStørelse, int årgang)
+        protected Køretøj(string registreringsnummer, string navn , Brændstof brændstof, double motorStørelse, int årgang)
         {
             Navn = navn;
             Registreringsnummer = registreringsnummer;
