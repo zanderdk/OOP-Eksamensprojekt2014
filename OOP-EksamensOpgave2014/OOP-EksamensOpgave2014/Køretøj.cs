@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace OOP_EksamensOpgave2014
 {
-    abstract public class Køretøj
+    public abstract class Køretøj
     {
         protected Køretøj(Brændstof brændstof, int årgang)
         {
@@ -62,17 +63,12 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
-        //TODO: skal opdateres så den er bedre
         private static bool ErGyldigtRegistreringsnummer(string value)
         {
-            if (value.Length != 7)
-            {
-                return false;
-            }
-            int buf;
-            return int.TryParse(value.Substring(2, 5), out buf);
+            string mønster = @"^[a-zæøåA-ZÆØÅ]{2}\d{5}$";
+            return Regex.Match(value, mønster).Success;
         }
-
+        
         private decimal _nyPris;
         public decimal NyPris
         {

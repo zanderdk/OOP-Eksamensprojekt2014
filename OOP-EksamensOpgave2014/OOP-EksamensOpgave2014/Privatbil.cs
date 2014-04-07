@@ -3,7 +3,7 @@
 namespace OOP_EksamensOpgave2014
 {
     // Personbil til privat brug
-    class Privatbil : Personbil
+    public class Privatbil : Personbil
     {
         public bool IsofixBeslag;
 

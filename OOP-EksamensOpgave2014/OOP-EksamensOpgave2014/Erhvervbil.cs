@@ -3,7 +3,7 @@
 namespace OOP_EksamensOpgave2014
 {
     // Personbil til erhverv
-    class Erhvervbil : Personbil
+    public class Erhvervbil : Personbil
     {
         public bool Sikkerhedsbøjle;
 

@@ -2,7 +2,7 @@
 
 namespace OOP_EksamensOpgave2014
 {
-    abstract public class StortKøretøj : Køretøj
+    public abstract class StortKøretøj : Køretøj
     {
         public double Højde;
         public double Længde;
