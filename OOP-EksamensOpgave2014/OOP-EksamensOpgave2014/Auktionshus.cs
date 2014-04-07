@@ -37,7 +37,7 @@ namespace OOP_EksamensOpgave2014
             nyAuktion.VedNytBud += notifikationsMetode;
 
             return nyAuktion.Auktionsnummer;
-            // TODO test event delegate M: Delegate?
+            // TODO test event delegate
         }
 
         public bool ModtagBud(IKøber køber, int auktionsNummer, decimal bud)
@@ -47,19 +47,8 @@ namespace OOP_EksamensOpgave2014
             {
                 throw new InvalidOperationException("Kan ikke find auktionsNummer");
             }
-            if (auk.MinPris >= bud) return false; //TODO move shit
-
-            if (køber is Firma)
-            {
-                if (køber.Saldo + (køber as Firma).Kredit < bud) return false;
-            }
-            else
-            {
-                if (køber.Saldo < bud) return false;
-            }
-            
-            auk.AfgivBud(køber, bud);
-            return true;
+                       
+            return auk.AfgivBud(køber, bud);
         }
 
         public bool AccepterBud(ISælger sælger, int auktionsNummer)

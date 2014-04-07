@@ -17,7 +17,6 @@ namespace OOP_EksamensOpgave2014
 
 
         public decimal MinPris { get; private set; }
-        // TODO immutable for now, M:Forklar immutable
         public Auktion(Køretøj køretøj, ISælger sælger, decimal minPris)
         {
             MinPris = minPris;
@@ -61,12 +60,28 @@ namespace OOP_EksamensOpgave2014
             }
         }
 
-        public void AfgivBud(IKøber køber, decimal bud)
-        {
+        public bool AfgivBud(IKøber køber, decimal bud)
+        {       
+            if (this.MinPris >= bud) return false;
+
+            if (køber is Firma)
+            {
+                if (køber.Saldo + (køber as Firma).Kredit < bud) return false;
+            }
+            else
+            {
+                if (køber.Saldo < bud) return false;
+            }
+            
             MinPris = bud;
             HøjesteByder = køber;
             var args = new AuktionArgs(Auktionsnummer, bud);
             _vedNytBud(args);
+            
+            
+            return true;
+
         }
+
     }
 }
