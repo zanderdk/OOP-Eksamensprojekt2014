@@ -65,10 +65,10 @@ namespace OOP_EksamensOpgave2014
 
         private static bool ErGyldigtRegistreringsnummer(string value)
         {
-            string mønster = @"^[a-zæøåA-ZÆØÅ]{2}\d{5}$";
+            const string mønster = @"^[a-zæøåA-ZÆØÅ]{2}\d{5}$";
             return Regex.Match(value, mønster).Success;
         }
-        
+
         private decimal _nyPris;
         public decimal NyPris
         {
