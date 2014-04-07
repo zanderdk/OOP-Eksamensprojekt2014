@@ -12,7 +12,6 @@ namespace OOP_EksamensOpgave2014
         {
         }
 
-        // TODO vi skal havde kigget på sæder
         public override int AntalSæder
         {
             get { return _antalSæder; }
@@ -20,9 +19,13 @@ namespace OOP_EksamensOpgave2014
             {
                 if (2 <= value && value <= 7)
                 {
+                    _antalSæder = value;
+                }
+                else
+                {
                     throw new ArgumentOutOfRangeException("value");
                 }
-                _antalSæder = value;
+                
             }
         }
 

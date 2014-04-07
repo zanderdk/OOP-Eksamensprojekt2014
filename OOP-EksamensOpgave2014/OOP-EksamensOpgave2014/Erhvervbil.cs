@@ -9,7 +9,7 @@ namespace OOP_EksamensOpgave2014
 
         public double Lasteevne;
 
-        public Erhvervbil(String registreringsnummer, string navn , Brændstof brændstof, double motorStørelse, int årgang, int sæder , bool trækkrog)
+        public Erhvervbil(String registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang, int sæder, bool trækkrog)
             : base(registreringsnummer, navn , brændstof, motorStørelse, årgang, sæder)
         {
             if (trækkrog)
