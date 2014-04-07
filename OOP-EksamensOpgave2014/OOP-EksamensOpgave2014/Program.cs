@@ -6,7 +6,7 @@ namespace OOP_EksamensOpgave2014
     {
         static void Main()
         {
-            var bil = new Privatbil("aa12345" ,"Volvo" ,Brændstof.Benzin, 5.3 ,2013) { Km = 9001, KmPrL = 21};
+            var bil = new Privatbil("aa12345" ,"Volvo" ,Brændstof.Benzin, 5.3 ,2013, 4) { Km = 9001, KmPrL = 21};
 
             Console.WriteLine(bil.ToString());
             Console.WriteLine(bil.Registreringsnummer);
