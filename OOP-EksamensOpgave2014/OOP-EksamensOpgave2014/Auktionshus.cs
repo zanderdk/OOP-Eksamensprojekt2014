@@ -31,7 +31,6 @@ namespace OOP_EksamensOpgave2014
             nyAuktion.VedNytBud += notifikationsMetode;
 
             return nyAuktion.Auktionsnummer;
-            // TODO test event delegate
         }
 
         public bool ModtagBud(IKøber køber, int auktionsNummer, decimal bud)
@@ -130,11 +129,11 @@ namespace OOP_EksamensOpgave2014
         // 4) Find alle personbiler til privatbrug som har kørt under et angivet antal km, og hvor minimum
         // salgsprisen samtidig ligger under et angivet beløb. Køretøjerne skal returneres i sorteret
         // rækkefølge efter antal kørte km.
-        public IEnumerable<Køretøj> PrivatBiler(double maksimalKm, decimal maxMinPris)
+        public IEnumerable<Køretøj> PrivatBiler(double maxKm, decimal maxMinPris)
         {
             return _salgsListe.Select(a => a.Køretøj)
                 .Where(k => k is Privatbil)
-                .Where(k => k.Km < maksimalKm)
+                .Where(k => k.Km < maxKm)
                 .Where(k => k.Auktion.MinPris < maxMinPris)
                 .OrderBy(k => k.Km);
         }

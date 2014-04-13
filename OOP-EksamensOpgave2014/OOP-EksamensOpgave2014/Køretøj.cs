@@ -191,9 +191,9 @@ namespace OOP_EksamensOpgave2014
             return false;
         }
 
-        public override string ToString() // TODO giv en sigende beskrivelse af køretøjet
+        public override string ToString() // TODO skal også printe typen
         {
-            return string.Format("Navn: {0}\nKilometer kørt: {1}\nKilometer Pr Liter: {2}\nEnergiklasse: {3}",Navn,Km,KmPrL,Energiklasse);
+            return string.Format("{0} fra {1}, Kilometer kørt: {2}, Energiklasse: {3}", Navn, Årgang, Km, Energiklasse);
         }
         
     }

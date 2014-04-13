@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OOP_EksamensOpgave2014
 {
@@ -49,7 +50,7 @@ namespace OOP_EksamensOpgave2014
             /*Eksempel: En benzin-drevet autocamper fra 2007 der kører 18.5 km/l (klasse A) vil med
             oliefyr havne i klasse C (18.5 * 0.7 = 12.95), mens en strøm-udgave vil havne i klasse B
             (18.5 * 0.8 = 14.8)*/
-            var auto = new Autocamper("aa12343", "dfgsdfg" , Brændstof.Benzin, 6.0 , 2007 , Varmesystem.Oliefyr, 2, 4) {KmPrL = 18.5,};
+            var auto = new Autocamper("aa12343", "Mercedes" , Brændstof.Benzin, 6.0 , 2007 , Varmesystem.Oliefyr, 2, 4) {KmPrL = 18.5,};
             Console.WriteLine(auto.Energiklasse);
             auto.Varmesystem = Varmesystem.Strøm;
             Console.WriteLine(auto.Energiklasse);
@@ -64,14 +65,17 @@ namespace OOP_EksamensOpgave2014
             Auktionshus carAway = new Auktionshus();
             Firma mærsk = new Firma(22756214){Postnummer = 1250, Saldo = 9000000000, Kredit = 0};
             Firma glCars = new Firma(23984723){Postnummer = 8850, Saldo = 15000, Kredit = 40000};
-            Privatperson alice = new Privatperson(1101702222){Postnummer = 9000, Saldo = 0};
-            Privatperson bob = new Privatperson(0101701111){Postnummer = 9000, Saldo = 200000};
+            Privatperson alice = new Privatperson(3101902222){Postnummer = 9000, Saldo = 0};
+            Privatperson bob = new Privatperson(1403921111){Postnummer = 9000, Saldo = 200000};
 
             int mId = carAway.SætTilSalg(bus, mærsk, 50000);
-            int aId = carAway.SætTilSalg(bil, alice, 70000);
-            //aId = carAway.SætTilSalg(bil, alice, 70000); Det kan hun da ikke
+            int aId = carAway.SætTilSalg(bil, alice, 10000);
+            //aId = carAway.SætTilSalg(bil, alice, 70000); Hun kan ikke sælge den samme igen
             int gId = carAway.SætTilSalg(auto, glCars, 10000);
 
+            carAway.ModtagBud(glCars, aId, 30000); //TODO tjek at man ikke kan byde over dig selv
+            carAway.ModtagBud(bob, aId, 45000);
+            carAway.ModtagBud(glCars, aId, 55000);
             carAway.ModtagBud(bob, aId, 80000);
             carAway.ModtagBud(mærsk, aId, 90000);
             carAway.ModtagBud(bob, aId, 95000);
@@ -92,11 +96,56 @@ namespace OOP_EksamensOpgave2014
             {
                 Console.WriteLine(auk.Køretøj);
             }
-            
+            //TODO delt det hele op i mapper
+            //TODO tilføj km kørt til construktor og km/l
+            //TODO flere biler
+            // Mærsk skal havde ryddet ud i deres biler
+            List<Køretøj> mærskLager = new List<Køretøj>
+            {
+                new Autocamper("sd87354", "Volvo", Brændstof.Benzin, 5.2, 1992, Varmesystem.Oliefyr, 5, 3){Toilet = true},
+                new Autocamper("sd87355", "Ford", Brændstof.Benzin, 5.2, 1992, Varmesystem.Strøm, 5, 0){Toilet = false},
+                new Autocamper("sd87356", "VW", Brændstof.Diesel, 3.2, 1992, Varmesystem.Gas, 7, 7){Toilet = true},
+                new Autocamper("sd87357", "Volvo", Brændstof.Diesel, 4.2, 1992, Varmesystem.Oliefyr, 3, 1){Toilet = true}
+            };
+
+            foreach (Køretøj item in mærskLager)
+            {
+                carAway.SætTilSalg(item, mærsk, 10000);
+            }
+
+            Console.WriteLine("\nVolvo til sagt:");
+            foreach (Køretøj item in carAway.Søg("Volvo"))
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("\nBusser og autocampere med mindst 5 pladser og et toilet:");
+            foreach (Køretøj item in carAway.Pladser(5))
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("\nStorekøretøjer der vejer mindre en 1000 kg:");
+            foreach (Køretøj item in carAway.StortKørekort(1000))
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("\nPersonbiler der har kørt mindre end 100kkm og minpris ikke er over 50k:");
+            foreach (Køretøj item in carAway.PrivatBiler(100000, 50000))
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("\nBiler til sagt i kbh. området:");
+            foreach (Køretøj item in carAway.Nærliggende(1000, 700))
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("\nGennemsnitlige energi-klasse tilsalg: " + carAway.GennemsnitligeEnergiKlasse());
 
             Console.ReadLine();
-            
-            // TODO "hardcodet" demonstration af funktionaliteten
         }
     }
 }

@@ -4,9 +4,9 @@ namespace OOP_EksamensOpgave2014
 {
     public class Privatperson : IKøber, ISælger
     {
-        public readonly int CPRnummer;
+        public readonly Int64 CPRnummer;
 
-        public Privatperson(int cpRnummer)
+        public Privatperson(Int64 cpRnummer)
         {
             CPRnummer = cpRnummer;
             _saldo = 0;

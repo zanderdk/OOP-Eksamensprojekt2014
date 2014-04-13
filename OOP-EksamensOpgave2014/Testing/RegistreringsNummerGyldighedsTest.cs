@@ -10,21 +10,20 @@ namespace Testing
         [TestMethod]
         public void RegistreringsNummer_IsValid()
         {
-            Privatbil test_bil = new Privatbil(Brændstof.Diesel, 1989);
-            test_bil.Registreringsnummer = "gw12345";
-            test_bil.Registreringsnummer = "yN67890";
-            test_bil.Registreringsnummer = "Qp83746";
-            test_bil.Registreringsnummer = "AY07634";
-            test_bil.Registreringsnummer = "wø00000";
-            test_bil.Registreringsnummer = "åa88734";
-            test_bil.Registreringsnummer = "HÆ72934";
-            test_bil.Registreringsnummer = "ØA98475";
-            test_bil.Registreringsnummer = "ll11111";
+            Privatbil testBil = new Privatbil("gw12345", "Volvo", Brændstof.Benzin, 6, 2014, 5);
+            testBil.Registreringsnummer = "yN67890";
+            testBil.Registreringsnummer = "Qp83746";
+            testBil.Registreringsnummer = "AY07634";
+            testBil.Registreringsnummer = "wø00000";
+            testBil.Registreringsnummer = "åa88734";
+            testBil.Registreringsnummer = "HÆ72934";
+            testBil.Registreringsnummer = "ØA98475";
+            testBil.Registreringsnummer = "ll11111";
         }
         
         public bool RegistreringsNummer_IsInvalid(string nummer)
         {
-            Privatbil test_bil = new Privatbil(Brændstof.Diesel, 1989);
+            Privatbil test_bil = new Privatbil("gw12345", "Volvo", Brændstof.Benzin, 6, 2014, 5);
             try
             {
                 test_bil.Registreringsnummer = nummer;
