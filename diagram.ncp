@@ -1,19 +1,13 @@
 <Project>
-  <Name>test</Name>
-  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
-    <Name>Untitled</Name>
-    <Language>CSharp</Language>
-    <Entities />
-    <Relationships />
-  </ProjectItem>
+  <Name>Diagram</Name>
   <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
     <Name>OOP-EksamensOpgave2014.exe</Name>
     <Language>CSharp</Language>
     <Entities>
       <Entity type="Interface">
-        <Name>ISoveable</Name>
+        <Name>IBeboelig</Name>
         <Access>Public</Access>
-        <Location left="1141" top="710" />
+        <Location left="736" top="649" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Property">Int32 Siddepladser { get; set; }</Member>
@@ -23,22 +17,22 @@
       <Entity type="Interface">
         <Name>ISaldo</Name>
         <Access>Public</Access>
-        <Location left="2114" top="638" />
+        <Location left="1738" top="388" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Property">Decimal Saldo { get; set; }</Member>
       </Entity>
       <Entity type="Interface">
-        <Name>Køber</Name>
+        <Name>IKøber</Name>
         <Access>Public</Access>
-        <Location left="1886" top="638" />
+        <Location left="1531" top="388" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
       </Entity>
       <Entity type="Interface">
-        <Name>Sælger</Name>
+        <Name>ISælger</Name>
         <Access>Public</Access>
-        <Location left="1662" top="638" />
+        <Location left="1323" top="388" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Property">Int32 Postnummer { get; set; }</Member>
@@ -47,43 +41,45 @@
       <Entity type="Class">
         <Name>Auktionshus</Name>
         <Access>Public</Access>
-        <Location left="1310" top="200" />
-        <Size width="466" height="332" />
+        <Location left="1138" top="49" />
+        <Size width="162" height="349" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private readonly List&lt;Auktion&gt; _salgsListe</Member>
         <Member type="Field">private readonly List&lt;Auktion&gt; _solgteKøretøjer</Member>
         <Member type="Property">public IEnumerable&lt;Auktion&gt; SolgteKøretøjer { get; }</Member>
         <Member type="Constructor">public Auktionshus()</Member>
-        <Member type="Method">public Int32 SætTilSalg(Køretøj k, Sælger s, Decimal minPris)</Member>
-        <Member type="Method">public Int32 SætTilSalg(Køretøj k, Sælger s, Decimal minPris, EventHandler&lt;AuktionArgs&gt; notifikationsMetode)</Member>
-        <Member type="Method">public Boolean ModtagBud(Køber køber, Int32 auktionsNummer, Decimal bud)</Member>
-        <Member type="Method">public Boolean AccepterBud(Sælger sælger, Int32 auktionsNummer)</Member>
+        <Member type="Method">public Int32 SætTilSalg(Køretøj k, ISælger s, Decimal minPris)</Member>
+        <Member type="Method">public Int32 SætTilSalg(Køretøj k, ISælger s, Decimal minPris, EventHandler&lt;AuktionArgs&gt; notifikationsMetode)</Member>
+        <Member type="Method">public Boolean ModtagBud(IKøber køber, Int32 auktionsNummer, Decimal bud)</Member>
+        <Member type="Method">public Boolean AccepterBud(ISælger sælger, Int32 auktionsNummer)</Member>
+        <Member type="Method">public Boolean ErKøretøjTilsalg(Køretøj køretøj)</Member>
         <Member type="Method">private static Decimal Salær(Decimal salgspris)</Member>
-        <Member type="Method">public IEnumerable&lt;Auktion&gt; Søg(String søgestreng)</Member>
-        <Member type="Method">public IEnumerable&lt;Auktion&gt; Pladser(Int32 antal)</Member>
-        <Member type="Method">public IEnumerable&lt;Auktion&gt; StortKørekort(Double maksimalvægt)</Member>
-        <Member type="Method">public IEnumerable&lt;Auktion&gt; PrivatBiler(Decimal maksimalKm, Decimal maxMinPris)</Member>
-        <Member type="Method">public IEnumerable&lt;Auktion&gt; Nærliggende(Int32 postnummer, Int32 radius)</Member>
+        <Member type="Method">public IEnumerable&lt;Køretøj&gt; Søg(String søgestreng)</Member>
+        <Member type="Method">public IEnumerable&lt;Køretøj&gt; Pladser(Int32 antal)</Member>
+        <Member type="Method">public IEnumerable&lt;Køretøj&gt; StortKørekort(Double maksimalvægt)</Member>
+        <Member type="Method">public IEnumerable&lt;Køretøj&gt; PrivatBiler(Double maxKm, Decimal maxMinPris)</Member>
+        <Member type="Method">public IEnumerable&lt;Køretøj&gt; Nærliggende(Int32 postnummer, Int32 radius)</Member>
         <Member type="Method">public Energiklasse GennemsnitligeEnergiKlasse()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Køretøj</Name>
         <Access>Public</Access>
-        <Location left="806" top="163" />
-        <Size width="162" height="468" />
+        <Location left="344" top="35" />
+        <Size width="162" height="587" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public readonly Brændstof Brændstof</Member>
         <Member type="Field">public readonly Int32 Årgang</Member>
         <Member type="Field">private String _navn</Member>
-        <Member type="Field">private Decimal _km</Member>
+        <Member type="Field">private Double _km</Member>
         <Member type="Field">private String _registreringsnummer</Member>
         <Member type="Field">private Decimal _nyPris</Member>
         <Member type="Field">protected Boolean _trækkrog</Member>
         <Member type="Field">private Double _motorstørrelse</Member>
         <Member type="Field">public Double KmPrL</Member>
+        <Member type="Field">private Auktion _auktion</Member>
         <Member type="Property">public String Navn { get; set; }</Member>
-        <Member type="Property">public Decimal Km { get; set; }</Member>
+        <Member type="Property">public Double Km { get; set; }</Member>
         <Member type="Property">public String Registreringsnummer { get; set; }</Member>
         <Member type="Property">public Decimal NyPris { get; set; }</Member>
         <Member type="Property">public virtual Boolean Trækkrog { get; set; }</Member>
@@ -92,17 +88,23 @@
         <Member type="Property">protected abstract Double MinMotorstørrelse { get; }</Member>
         <Member type="Property">public Double Motorstørrelse { get; set; }</Member>
         <Member type="Property">public Energiklasse Energiklasse { get; }</Member>
-        <Member type="Constructor">protected Køretøj(Brændstof brændstof, Int32 årgang)</Member>
+        <Member type="Property">public Auktion Auktion { get; set; }</Member>
+        <Member type="Constructor">protected Køretøj(String registreringsnummer, String navn, Brændstof brændstof, Double motorStørelse, Int32 årgang)</Member>
         <Member type="Method">private static Boolean ErGyldigtRegistreringsnummer(String value)</Member>
         <Member type="Method">private static Energiklasse Energimærke(Double brændstofsforbrug, Int32 min, Int32 mid, Int32 max)</Member>
+        <Member type="Method">public override Int32 GetHashCode()</Member>
+        <Member type="Method">public override Boolean Equals(Object obj)</Member>
+        <Member type="Method">public Boolean Equals(Køretøj obj)</Member>
         <Member type="Method">public override String ToString()</Member>
+        <Member type="Method">public static Boolean operator ==(Køretøj a, Køretøj b)</Member>
+        <Member type="Method">public static Boolean operator !=(Køretøj a, Køretøj b)</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Autocamper</Name>
         <Access>Public</Access>
-        <Location left="1141" top="1012" />
-        <Size width="162" height="216" />
+        <Location left="736" top="362" />
+        <Size width="162" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public Varmesystem Varmesystem</Member>
         <Member type="Property">public override Kørekorttype Kørekorttype { get; }</Member>
@@ -111,13 +113,14 @@
         <Member type="Property">public Int32 Siddepladser { get; set; }</Member>
         <Member type="Property">public Int32 Sovepladser { get; set; }</Member>
         <Member type="Property">public Boolean Toilet { get; set; }</Member>
-        <Member type="Constructor">public Autocamper(Brændstof brændstof, Int32 årgang, Varmesystem varmesystem)</Member>
+        <Member type="Constructor">public Autocamper(String registreringsnummer, String navn, Brændstof brændstof, Double motorStørelse, Int32 årgang, Varmesystem varmesystem, Int32 siddepladser, Int32 sovepladser)</Member>
+        <Member type="Method">internal static Double EnergimærkeRegner(Køretøj køretøj, Double brændstofsforbrug)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>StortKøretøj</Name>
         <Access>Public</Access>
-        <Location left="703" top="664" />
+        <Location left="493" top="649" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public Double Højde</Member>
@@ -125,26 +128,26 @@
         <Member type="Field">public Double Vægt</Member>
         <Member type="Property">protected virtual Double MinMotorstørrelse { get; }</Member>
         <Member type="Property">protected virtual Double MaxMotorstørrelse { get; }</Member>
-        <Member type="Constructor">protected StortKøretøj(Brændstof brændstof, Int32 årgang)</Member>
+        <Member type="Constructor">protected StortKøretøj(String registreringsnummer, String navn, Brændstof brændstof, Double motorStørelse, Int32 årgang, Double vægt)</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Bus</Name>
         <Access>Public</Access>
-        <Location left="916" top="1012" />
+        <Location left="736" top="928" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Property">public override Kørekorttype Kørekorttype { get; }</Member>
         <Member type="Property">public Int32 Siddepladser { get; set; }</Member>
         <Member type="Property">public Int32 Sovepladser { get; set; }</Member>
         <Member type="Property">public Boolean Toilet { get; set; }</Member>
-        <Member type="Constructor">public Bus(Brændstof brændstof, Int32 årgang)</Member>
+        <Member type="Constructor">public Bus(String registreringsnummer, String navn, Brændstof brændstof, Double motorStørelse, Int32 årgang, Int32 siddepladser, Int32 sovepladser, Double vægt)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Personbil</Name>
         <Access>Public</Access>
-        <Location left="384" top="664" />
+        <Location left="127" top="637" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">protected Int32 _antalSæder</Member>
@@ -152,13 +155,13 @@
         <Member type="Property">public abstract Int32 AntalSæder { get; set; }</Member>
         <Member type="Property">protected virtual Double MaxMotorstørrelse { get; }</Member>
         <Member type="Property">protected virtual Double MinMotorstørrelse { get; }</Member>
-        <Member type="Constructor">protected Personbil(Brændstof brændstof, Int32 årgang)</Member>
+        <Member type="Constructor">protected Personbil(String registreringsnummer, String navn, Brændstof brændstof, Double motorStørelse, Int32 årgang, Int32 sæder)</Member>
         <Modifier>Abstract</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Erhvervbil</Name>
-        <Access>Internal</Access>
-        <Location left="224" top="1003" />
+        <Access>Public</Access>
+        <Location left="22" top="928" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public Boolean Sikkerhedsbøjle</Member>
@@ -166,16 +169,17 @@
         <Member type="Property">public override Kørekorttype Kørekorttype { get; }</Member>
         <Member type="Property">public override Int32 AntalSæder { get; set; }</Member>
         <Member type="Property">public override Boolean Trækkrog { get; set; }</Member>
-        <Member type="Constructor">public Erhvervbil(Brændstof brændstof, Int32 årgang, Boolean trækkrog)</Member>
+        <Member type="Constructor">public Erhvervbil(String registreringsnummer, String navn, Brændstof brændstof, Double motorStørelse, Int32 årgang, Int32 sæder, Boolean trækkrog)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Firma</Name>
         <Access>Public</Access>
-        <Location left="1631" top="999" />
+        <Location left="1532" top="782" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public readonly Int32 CVRnummer</Member>
+        <Member type="Field">private Decimal _kredit</Member>
         <Member type="Field">private Decimal _saldo</Member>
         <Member type="Property">public Decimal Kredit { get; set; }</Member>
         <Member type="Property">public Decimal Saldo { get; set; }</Member>
@@ -187,44 +191,44 @@
       <Entity type="Class">
         <Name>Lastbil</Name>
         <Access>Public</Access>
-        <Location left="676" top="1012" />
+        <Location left="493" top="928" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public Double Lasteevne</Member>
         <Member type="Property">public override Kørekorttype Kørekorttype { get; }</Member>
-        <Member type="Constructor">public Lastbil(Brændstof brændstof, Int32 årgang)</Member>
+        <Member type="Constructor">public Lastbil(String registreringsnummer, String navn, Brændstof brændstof, Double motorStørelse, Int32 årgang, Double vægt)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Privatbil</Name>
-        <Access>Internal</Access>
-        <Location left="464" top="1012" />
+        <Access>Public</Access>
+        <Location left="239" top="928" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public Boolean IsofixBeslag</Member>
         <Member type="Property">public override Int32 AntalSæder { get; set; }</Member>
         <Member type="Property">public override Kørekorttype Kørekorttype { get; }</Member>
-        <Member type="Constructor">public Privatbil(Brændstof brændstof, Int32 årgang)</Member>
+        <Member type="Constructor">public Privatbil(String registreringsnummer, String navn, Brændstof brændstof, Double motorStørelse, Int32 årgang, Int32 sæder)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Privatperson</Name>
-        <Access>Internal</Access>
-        <Location left="1922" top="999" />
+        <Access>Public</Access>
+        <Location left="1323" top="782" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">public readonly Int32 CPRnummer</Member>
+        <Member type="Field">public readonly Int64 CPRnummer</Member>
         <Member type="Field">private Decimal _saldo</Member>
         <Member type="Property">public Decimal Saldo { get; set; }</Member>
         <Member type="Property">public Int32 Postnummer { get; set; }</Member>
-        <Member type="Constructor">public Privatperson(Int32 cpRnummer)</Member>
+        <Member type="Constructor">public Privatperson(Int64 cpRnummer)</Member>
         <Member type="Method">public Void ModtagNotifikationOmBud(Object sender, AuktionArgs args)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Program</Name>
         <Access>Internal</Access>
-        <Location left="224" top="326" />
+        <Location left="1967" top="746" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public Program()</Member>
@@ -233,8 +237,8 @@
       </Entity>
       <Entity type="Class">
         <Name>RegistreringnummerException</Name>
-        <Access>Internal</Access>
-        <Location left="12" top="326" />
+        <Access>Public</Access>
+        <Location left="1967" top="265" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public RegistreringnummerException()</Member>
@@ -245,26 +249,27 @@
       <Entity type="Class">
         <Name>Auktion</Name>
         <Access>Public</Access>
-        <Location left="1861" top="212" />
-        <Size width="162" height="264" />
+        <Location left="1323" top="49" />
+        <Size width="162" height="281" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">public readonly Køretøj Køretøj</Member>
-        <Member type="Field">public readonly Sælger Sælger</Member>
+        <Member type="Field">private Køretøj _Køretøj</Member>
+        <Member type="Field">public readonly ISælger Sælger</Member>
         <Member type="Field">public readonly Int32 Auktionsnummer</Member>
-        <Member type="Property">public Køber HøjesteByder { get; set; }</Member>
+        <Member type="Property">public Køretøj Køretøj { get; }</Member>
+        <Member type="Property">public IKøber HøjesteByder { get; set; }</Member>
         <Member type="Property">public Decimal MinPris { get; private set; }</Member>
         <Member type="Property">public static Int32 NextId { get; private set; }</Member>
         <Member type="Event">public event EventHandler&lt;AuktionArgs&gt; VedNytBud</Member>
-        <Member type="Constructor">public Auktion(Køretøj køretøj, Sælger sælger, Decimal minPris)</Member>
+        <Member type="Constructor">public Auktion(Køretøj køretøj, ISælger sælger, Decimal minPris)</Member>
         <Member type="Constructor">static Auktion()</Member>
         <Member type="Method">protected virtual Void _vedNytBud(AuktionArgs e)</Member>
-        <Member type="Method">public Void AfgivBud(Køber køber, Decimal bud)</Member>
+        <Member type="Method">public Boolean AfgivBud(IKøber køber, Decimal bud)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>AuktionArgs</Name>
         <Access>Public</Access>
-        <Location left="2114" top="212" />
+        <Location left="1545" top="49" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public readonly Decimal Bud</Member>
@@ -275,7 +280,7 @@
       <Entity type="Structure">
         <Name>Dimensioner</Name>
         <Access>Public</Access>
-        <Location left="172" top="664" />
+        <Location left="127" top="362" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public Double Længde</Member>
@@ -285,7 +290,7 @@
       <Entity type="Enum">
         <Name>Brændstof</Name>
         <Access>Public</Access>
-        <Location left="1115" top="400" />
+        <Location left="568" top="49" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Value>Diesel = 0</Value>
@@ -294,7 +299,7 @@
       <Entity type="Enum">
         <Name>Energiklasse</Name>
         <Access>Public</Access>
-        <Location left="436" top="12" />
+        <Location left="1967" top="504" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Value>A = 0</Value>
@@ -305,7 +310,7 @@
       <Entity type="Enum">
         <Name>Kørekorttype</Name>
         <Access>Public</Access>
-        <Location left="224" top="12" />
+        <Location left="1967" top="16" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Value>A = 0</Value>
@@ -319,7 +324,7 @@
       <Entity type="Enum">
         <Name>Varmesystem</Name>
         <Access>Public</Access>
-        <Location left="1141" top="1340" />
+        <Location left="954" top="362" />
         <Size width="162" height="216" />
         <Collapsed>False</Collapsed>
         <Value>Gas = 0</Value>
@@ -402,6 +407,16 @@
         <StartRole>Brændstof</StartRole>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
+      <Relationship type="Association" first="5" second="17">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>_auktion</StartRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
       <Relationship type="Association" first="6" second="23">
         <Label>
         </Label>
@@ -429,7 +444,7 @@
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
-        <StartRole>Køretøj</StartRole>
+        <StartRole>_Køretøj</StartRole>
         <EndMultiplicity>1</EndMultiplicity>
       </Relationship>
       <Relationship type="Association" first="17" second="3">
