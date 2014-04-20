@@ -96,7 +96,7 @@ namespace OOP_EksamensOpgave2014
             {
                 Console.WriteLine(auk.Køretøj);
             }
-            //TODO delt det hele op i mapper
+
             //TODO tilføj km kørt til construktor og km/l
             //TODO flere biler
             // Mærsk skal havde ryddet ud i deres biler

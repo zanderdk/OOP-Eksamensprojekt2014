@@ -41,34 +41,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auktionshus.cs" />
-    <Compile Include="Autocamper.cs" />
-    <Compile Include="Brændstof.cs" />
-    <Compile Include="Bus.cs" />
-    <Compile Include="Dimensioner.cs" />
-    <Compile Include="Energiklasse.cs" />
-    <Compile Include="Erhvervbil.cs" />
-    <Compile Include="Firma.cs" />
-    <Compile Include="ISaldo.cs" />
-    <Compile Include="IBeboelig.cs" />
-    <Compile Include="IKøber.cs" />
-    <Compile Include="Kørekorttype.cs" />
-    <Compile Include="Køretøj.cs" />
-    <Compile Include="Lastbil.cs" />
-    <Compile Include="Personbil.cs" />
-    <Compile Include="Privatbil.cs" />
-    <Compile Include="Privatperson.cs" />
+    <Compile Include="Auktionshus\Auktionshus.cs" />
+    <Compile Include="Køretøjer\Autocamper.cs" />
+    <Compile Include="Køretøjer\Brændstof.cs" />
+    <Compile Include="Køretøjer\Bus.cs" />
+    <Compile Include="Køretøjer\Dimensioner.cs" />
+    <Compile Include="Køretøjer\Energiklasse.cs" />
+    <Compile Include="Køretøjer\Erhvervbil.cs" />
+    <Compile Include="Auktionshus\Firma.cs" />
+    <Compile Include="Auktionshus\ISaldo.cs" />
+    <Compile Include="Køretøjer\IBeboelig.cs" />
+    <Compile Include="Auktionshus\IKøber.cs" />
+    <Compile Include="Køretøjer\Kørekorttype.cs" />
+    <Compile Include="Køretøjer\Køretøj.cs" />
+    <Compile Include="Køretøjer\Lastbil.cs" />
+    <Compile Include="Køretøjer\Personbil.cs" />
+    <Compile Include="Køretøjer\Privatbil.cs" />
+    <Compile Include="Auktionshus\Privatperson.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistreringnummerException.cs" />
-    <Compile Include="Auktion.cs" />
-    <Compile Include="StortKøretøj.cs" />
-    <Compile Include="ISælger.cs" />
-    <Compile Include="Varmesystem.cs" />
+    <Compile Include="Køretøjer\RegistreringnummerException.cs" />
+    <Compile Include="Auktionshus\Auktion.cs" />
+    <Compile Include="Køretøjer\StortKøretøj.cs" />
+    <Compile Include="Auktionshus\ISælger.cs" />
+    <Compile Include="Køretøjer\Varmesystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
