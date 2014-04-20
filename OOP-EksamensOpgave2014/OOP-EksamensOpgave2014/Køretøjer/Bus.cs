@@ -2,9 +2,11 @@
 {
     public class Bus : StortKøretøj, IBeboelig
     {
-        public Bus(string registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang)
-            : base(registreringsnummer, navn ,brændstof, motorStørelse, årgang)
+        public Bus(string registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang, int siddepladser, int sovepladser, double vægt)
+            : base(registreringsnummer, navn ,brændstof, motorStørelse, årgang, vægt)
         {
+            Siddepladser = siddepladser;
+            Sovepladser = sovepladser;
         }
 
         public override Kørekorttype Kørekorttype

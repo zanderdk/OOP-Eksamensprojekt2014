@@ -6,8 +6,8 @@ namespace OOP_EksamensOpgave2014
     {
         public double Lasteevne;
 
-        public Lastbil(String registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang)
-            : base(registreringsnummer, navn ,brændstof, motorStørelse, årgang)
+        public Lastbil(String registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang, double vægt)
+            : base(registreringsnummer, navn ,brændstof, motorStørelse, årgang, vægt)
         {
         }
 

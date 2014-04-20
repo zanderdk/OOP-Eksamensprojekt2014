@@ -8,13 +8,14 @@ namespace OOP_EksamensOpgave2014
         public double Længde;
         public double Vægt;
 
-        protected StortKøretøj(string registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang)
+        protected StortKøretøj(string registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang, double vægt)
             : base(registreringsnummer, navn, brændstof, motorStørelse, årgang)
         {
             if (brændstof == Brændstof.Benzin)
             {
                 throw new ArgumentException("StortKøretøj kan kun køre på diesel");
             }
+            Vægt = vægt;
         }
 
         protected override double MinMotorstørrelse

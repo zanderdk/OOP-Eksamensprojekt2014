@@ -42,7 +42,7 @@ namespace OOP_EksamensOpgave2014
                 Console.WriteLine("\nMotorstørrelse er for stor til personbil");
             }
             // men 11 er ikke for stor til en bus
-            Køretøj bus = new Bus("df78645", "Opel", Brændstof.Diesel, 11, 2010){KmPrL = 8, Trækkrog = true};
+            Køretøj bus = new Bus("df78645", "Opel", Brændstof.Diesel, 11, 2010, 20, 0, 800){Km = 500000, KmPrL = 8, Trækkrog = true};
 
             Console.WriteLine("\nUdregning af forskellige energiklasser:");
             Console.WriteLine(bus.Energiklasse);
@@ -50,7 +50,7 @@ namespace OOP_EksamensOpgave2014
             /*Eksempel: En benzin-drevet autocamper fra 2007 der kører 18.5 km/l (klasse A) vil med
             oliefyr havne i klasse C (18.5 * 0.7 = 12.95), mens en strøm-udgave vil havne i klasse B
             (18.5 * 0.8 = 14.8)*/
-            var auto = new Autocamper("aa12343", "Mercedes" , Brændstof.Benzin, 6.0 , 2007 , Varmesystem.Oliefyr, 2, 4) {KmPrL = 18.5,};
+            var auto = new Autocamper("aa12343", "Mercedes" , Brændstof.Benzin, 6.0 , 2007 , Varmesystem.Oliefyr, 2, 4) {Km = 34800, KmPrL = 18.5,};
             Console.WriteLine(auto.Energiklasse);
             auto.Varmesystem = Varmesystem.Strøm;
             Console.WriteLine(auto.Energiklasse);
@@ -97,15 +97,19 @@ namespace OOP_EksamensOpgave2014
                 Console.WriteLine(auk.Køretøj);
             }
 
-            //TODO tilføj km kørt til construktor og km/l
-            //TODO flere biler
             // Mærsk skal havde ryddet ud i deres biler
             List<Køretøj> mærskLager = new List<Køretøj>
             {
-                new Autocamper("sd87354", "Volvo", Brændstof.Benzin, 5.2, 1992, Varmesystem.Oliefyr, 5, 3){Toilet = true},
-                new Autocamper("sd87355", "Ford", Brændstof.Benzin, 5.2, 1992, Varmesystem.Strøm, 5, 0){Toilet = false},
-                new Autocamper("sd87356", "VW", Brændstof.Diesel, 3.2, 1992, Varmesystem.Gas, 7, 7){Toilet = true},
-                new Autocamper("sd87357", "Volvo", Brændstof.Diesel, 4.2, 1992, Varmesystem.Oliefyr, 3, 1){Toilet = true}
+                new Autocamper("sd87354", "Volvo", Brændstof.Benzin, 5.2, 1992, Varmesystem.Oliefyr, 5, 3){Toilet = true, Km = 400000, KmPrL = 19.3},
+                new Autocamper("kj83645", "Ford", Brændstof.Benzin, 5.2, 1992, Varmesystem.Strøm, 5, 0){Toilet = false, Km = 200000, KmPrL = 17.3},
+                new Autocamper("of91546", "VW", Brændstof.Diesel, 3.2, 2013, Varmesystem.Gas, 7, 7){Toilet = true, Km = 1000, KmPrL = 20.4},
+                new Autocamper("le75635", "Audi", Brændstof.Diesel, 4.2, 1999, Varmesystem.Oliefyr, 3, 1){Toilet = true, Km = 165000, KmPrL = 19.3},
+                new Bus("pw94673", "Scania", Brændstof.Diesel, 10.2, 2006, 49, 0, 2000){Km = 405966, KmPrL = 18},
+                new Bus("ue84756", "Mercedes-Benz", Brændstof.Diesel, 12.3, 2010, 28, 28, 1500){Toilet = true, Km = 98273, KmPrL = 25},
+                new Bus("ok57635", "Scania", Brændstof.Diesel, 11.2, 2006, 5, 0, 900){Km = 438500, KmPrL = 17},
+                new Privatbil("ac23645", "Volvo", Brændstof.Benzin, 7, 2013, 5){Km = 45000, KmPrL = 30},
+                new Privatbil("kj82734", "BMW", Brændstof.Benzin, 8, 2013, 5){Km = 105000, KmPrL = 20},
+                new Erhvervbil("ok45857", "Renault", Brændstof.Diesel, 5, 2012, 2, true){Km = 33000, KmPrL = 20}
             };
 
             foreach (Køretøj item in mærskLager)
@@ -137,8 +141,8 @@ namespace OOP_EksamensOpgave2014
                 Console.WriteLine(item);
             }
 
-            Console.WriteLine("\nBiler til sagt i kbh. området:");
-            foreach (Køretøj item in carAway.Nærliggende(1000, 700))
+            Console.WriteLine("\nBiler til sagt i indre kbh. området:");
+            foreach (Køretøj item in carAway.Nærliggende(1000, 999))
             {
                 Console.WriteLine(item);
             }
