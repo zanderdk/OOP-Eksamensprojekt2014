@@ -149,15 +149,15 @@ namespace OOP_EksamensOpgave2014
             return Energiklasse.D;
         }
 
-        private Auktion _Auktion;
+        private Auktion _auktion;
         public Auktion Auktion { 
-            get { return _Auktion; } 
+            get { return _auktion; } 
             set 
             {
 
                 if(value == null)
                 {
-                    throw new ArgumentNullException("Auktion kan ikke være null.");
+                    throw new ArgumentNullException("value");
                 }
 
                 if(value.Køretøj != this)
@@ -165,7 +165,7 @@ namespace OOP_EksamensOpgave2014
                     throw new ArgumentException("Kun auktioner kan sætte denne property.");
                 }
 
-                _Auktion = value;
+                _auktion = value;
 
             } 
         }
@@ -198,6 +198,22 @@ namespace OOP_EksamensOpgave2014
                 return false;
 
             return Registreringsnummer == obj.Registreringsnummer;
+        }
+
+        public static bool operator ==(Køretøj a, Køretøj b)
+        {
+            if (ReferenceEquals(a, b))
+                return true;
+
+            if (((object)a == null) || ((object)b == null))
+                return false;
+
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(Køretøj a, Køretøj b)
+        {
+            return !(a == b);
         }
 
         public override string ToString()

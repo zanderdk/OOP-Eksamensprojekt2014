@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OOP_EksamensOpgave2014
+﻿namespace OOP_EksamensOpgave2014
 {
     public class Autocamper : Køretøj, IBeboelig
     {

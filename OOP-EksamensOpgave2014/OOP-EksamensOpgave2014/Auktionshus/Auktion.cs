@@ -19,10 +19,12 @@ namespace OOP_EksamensOpgave2014
         public decimal MinPris { get; private set; }
         public Auktion(Køretøj køretøj, ISælger sælger, decimal minPris)
         {
-            if (køretøj == null || sælger == null)
-            {
-                throw new ArgumentNullException("sælger og køretøj kan ikke være null.");
-            }
+            if (køretøj == null)
+                throw new ArgumentNullException("køretøj");
+
+            if (sælger == null)
+                throw new ArgumentNullException("sælger");
+
             MinPris = minPris;
             Sælger = sælger;
             _Køretøj = køretøj;
@@ -58,7 +60,7 @@ namespace OOP_EksamensOpgave2014
 
         public bool AfgivBud(IKøber køber, decimal bud)
         {       
-            if (this.MinPris >= bud) return false;
+            if (MinPris >= bud) return false;
 
             if (køber is Firma)
             {
