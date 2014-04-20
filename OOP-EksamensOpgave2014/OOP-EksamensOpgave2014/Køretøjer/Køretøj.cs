@@ -191,9 +191,10 @@ namespace OOP_EksamensOpgave2014
             return false;
         }
 
-        public override string ToString() // TODO skal også printe typen
+        public override string ToString()
         {
-            return string.Format("{0} fra {1}, Kilometer kørt: {2}, Energiklasse: {3}", Navn, Årgang, Km, Energiklasse);
+            string biltype = GetType().ToString().Split('.')[1];
+            return string.Format("{0}: {1} fra {2}, Kilometer kørt: {3}, Energiklasse: {4}", biltype, Navn, Årgang, Km, Energiklasse);
         }
         
     }

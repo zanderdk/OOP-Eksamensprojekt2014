@@ -73,7 +73,7 @@ namespace OOP_EksamensOpgave2014
             //aId = carAway.SætTilSalg(bil, alice, 70000); Hun kan ikke sælge den samme igen
             int gId = carAway.SætTilSalg(auto, glCars, 10000);
 
-            carAway.ModtagBud(glCars, aId, 30000); //TODO tjek at man ikke kan byde over dig selv
+            carAway.ModtagBud(glCars, aId, 30000);
             carAway.ModtagBud(bob, aId, 45000);
             carAway.ModtagBud(glCars, aId, 55000);
             carAway.ModtagBud(bob, aId, 80000);
@@ -107,6 +107,7 @@ namespace OOP_EksamensOpgave2014
                 new Bus("pw94673", "Scania", Brændstof.Diesel, 10.2, 2006, 49, 0, 2000){Km = 405966, KmPrL = 18},
                 new Bus("ue84756", "Mercedes-Benz", Brændstof.Diesel, 12.3, 2010, 28, 28, 1500){Toilet = true, Km = 98273, KmPrL = 25},
                 new Bus("ok57635", "Scania", Brændstof.Diesel, 11.2, 2006, 5, 0, 900){Km = 438500, KmPrL = 17},
+                new Lastbil("bw87234", "Opel", Brændstof.Diesel, 10.7, 2009, 900){Km = 105000, KmPrL = 20},
                 new Privatbil("ac23645", "Volvo", Brændstof.Benzin, 7, 2013, 5){Km = 45000, KmPrL = 30},
                 new Privatbil("kj82734", "BMW", Brændstof.Benzin, 8, 2013, 5){Km = 105000, KmPrL = 20},
                 new Erhvervbil("ok45857", "Renault", Brændstof.Diesel, 5, 2012, 2, true){Km = 33000, KmPrL = 20}
