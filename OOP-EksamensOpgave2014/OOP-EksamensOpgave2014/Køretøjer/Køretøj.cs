@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace OOP_EksamensOpgave2014
 {
-    public abstract class Køretøj
+    public abstract class Køretøj : IEquatable<Køretøj>
     {
         protected Køretøj(string registreringsnummer, string navn, Brændstof brændstof, double motorStørelse, int årgang)
         {
@@ -170,25 +170,34 @@ namespace OOP_EksamensOpgave2014
             } 
         }
 
+        public override int GetHashCode()
+        {
+            return Registreringsnummer == null ? 0 : Registreringsnummer.GetHashCode();
+        }
+
         public override bool Equals(object obj)
         {
             if(obj == null)
-            {
                 return false;
-            }
 
-            Køretøj k = obj as Køretøj;
-            if(k == null)
-            {
+            if (GetType() != obj.GetType())
                 return false;
-            }
 
-            if (this.Registreringsnummer == k.Registreringsnummer)
-            {
+            return Equals((Køretøj)obj);  
+        }
+
+        public bool Equals(Køretøj obj)
+        {
+            if (obj == null)
+                return false;
+
+            if (ReferenceEquals(this, obj))
                 return true;
-            }
 
-            return false;
+            if (GetHashCode() != obj.GetHashCode())
+                return false;
+
+            return Registreringsnummer == obj.Registreringsnummer;
         }
 
         public override string ToString()

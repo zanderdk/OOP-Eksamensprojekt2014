@@ -70,7 +70,7 @@ namespace OOP_EksamensOpgave2014
 
             int mId = carAway.SætTilSalg(bus, mærsk, 50000);
             int aId = carAway.SætTilSalg(bil, alice, 10000);
-            //aId = carAway.SætTilSalg(bil, alice, 70000); Hun kan ikke sælge den samme igen
+            //aId = carAway.SætTilSalg(bil, alice, 70000); //Hun kan ikke sælge den samme igen
             int gId = carAway.SætTilSalg(auto, glCars, 10000);
 
             carAway.ModtagBud(glCars, aId, 30000);
